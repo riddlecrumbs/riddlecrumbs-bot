@@ -1,6 +1,7 @@
 """Riddle Crumbs posting robot.
 
   python bot/run.py prepare --event schedule --cron "0 18 * * *"   # decide + render into site/
+      (8am slot = oddly satisfying, 1pm = brain snack, 7pm = would-you-rather / birth month)
   python bot/run.py publish --base https://<user>.github.io/<repo>/  # post the rendered reel
   python bot/run.py check                                          # verify the Instagram token
 
@@ -21,6 +22,8 @@ SITE = ROOT / "site"
 PENDING = ROOT / "pending.json"
 API = "https://graph.instagram.com/v23.0"
 SLOTS = {"0 7 * * *": 0, "0 12 * * *": 1, "0 18 * * *": 2}   # UTC: 8am / 1pm / 7pm UK summer time
+STREAM_OF_SLOT = {0: "relax", 1: "brain", 2: "social"}        # 8am chill, 1pm brain snack, 7pm fun choice
+COUNTER = {"brain": "next", "relax": "next_relax", "social": "next_social"}
 MOCK = os.environ.get("MOCK_API") == "1"
 
 
@@ -28,12 +31,13 @@ MOCK = os.environ.get("MOCK_API") == "1"
 def load_state():
     if STATE.exists():
         return json.loads(STATE.read_text())
-    return {"next": 0, "start": None, "paused": False, "last_slot": None, "token_refreshed": None, "log": []}
+    return {"next": 0, "next_relax": 0, "next_social": 0, "start": None, "paused": False,
+            "last_slot": None, "token_refreshed": None, "log": []}
 
 
 def save_state(s):
     STATE.parent.mkdir(exist_ok=True)
-    s["log"] = s["log"][-200:]
+    s["log"] = s["log"][-300:]
     STATE.write_text(json.dumps(s, indent=1, ensure_ascii=False) + "\n")
 
 
@@ -50,9 +54,7 @@ def today():
 
 
 def allowed_slots(day_index):
-    """Ramp-up: week 1 -> 1/day, week 2 -> 2/day, then 3/day."""
-    if day_index < 7: return {2}
-    if day_index < 14: return {1, 2}
+    """3 reels a day: 8am, 1pm and 7pm UK time."""
     return {0, 1, 2}
 
 
@@ -140,28 +142,29 @@ def cmd_prepare(a):
         elif slot is None: why = f"unknown schedule {a.cron!r}"
         elif s.get("last_slot") == key: why = "this slot already posted"
         elif slot not in allowed_slots(day): why = f"ramp-up day {day}: slot {slot} not used yet"
-        else: go, publish, why = True, True, f"day {day}, slot {slot}"
+        else: go, publish, why = True, True, f"day {day}, slot {slot} ({STREAM_OF_SLOT[slot]})"
     print("Decision:", why)
     if not go:
         gh_output(go="false", publish="false"); return
 
-    n = s["next"]
-    it = content.item_for(n)
-    import engine
+    stream = STREAM_OF_SLOT[SLOTS[a.cron.strip()]] if a.event == "schedule" else (a.stream or "brain")
+    n = s.get(COUNTER[stream], 0)
+    it = content.stream_item(stream, n)
+    import engine, fun  # noqa: F401  (fun registers the extra formats)
     SITE.mkdir(exist_ok=True)
-    fname = f"r{n:04d}-{it['id']}.mp4"
+    fname = f"{stream[0]}{n:04d}-{it['id']}.mp4"
     t0 = time.time()
     engine.render(it, SITE / fname)
     print(f"Rendered post #{n}: {it['type']} / {it['id']} in {time.time() - t0:.0f}s")
     (SITE / ".nojekyll").write_text("")
     (SITE / "index.html").write_text("<!doctype html><title>Riddle Crumbs</title><p>Nothing to see here.</p>")
-    cover_ms = {"quiz": 2500, "maths": 2600, "fact": 3200, "stroop": 2500, "hack": 3000}.get(it["type"], 0)
-    PENDING.write_text(json.dumps({"n": n, "id": it["id"], "type": it["type"], "file": fname,
+    cover_ms = {"quiz": 2500, "maths": 2600, "fact": 3200, "stroop": 2500, "hack": 3000,
+                "relax": 2500, "wyr": 2500, "month": 3200}.get(it["type"], 0)
+    PENDING.write_text(json.dumps({"n": n, "stream": stream, "id": it["id"], "type": it["type"], "file": fname,
                                    "caption": content.caption(it), "thumb_offset": cover_ms,
                                    "slot": f"{today().isoformat()}-{SLOTS.get(a.cron.strip())}" if a.event == "schedule" else None},
                                   ensure_ascii=False, indent=1))
-    left = content.stock_left(n + 1)
-    print("Hand-written stock left after this post:", left)
+    if stream == "brain": print("Hand-written stock left after this post:", content.stock_left(n + 1))
     gh_output(go="true", publish="true" if publish else "false", file=fname)
 
 
@@ -199,10 +202,10 @@ def cmd_publish(a):
         raise SystemExit("Timed out waiting for Instagram to process the video.")
     media = api("POST", f"{uid}/media_publish", creation_id=cid, access_token=tok)["id"]
     print(f"Published! media id {media}")
-    s["next"] = p["n"] + 1
+    s[COUNTER[p.get("stream", "brain")]] = p["n"] + 1
     if not s["start"]: s["start"] = today().isoformat()
     if p.get("slot"): s["last_slot"] = p["slot"]
-    s["log"].append({"n": p["n"], "id": p["id"], "media": media,
+    s["log"].append({"stream": p.get("stream", "brain"), "n": p["n"], "id": p["id"], "media": media,
                      "at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes")})
     maybe_refresh(tok, s)
     save_state(s)
@@ -212,7 +215,8 @@ def cmd_check(a):
     tok, me = get_token_and_user()
     print(f"Token works. Connected to @{me.get('username')} (id {me.get('user_id')}).")
     s = load_state()
-    print(f"Next post number: {s['next']}. Hand-written stock left:", content.stock_left(s["next"]))
+    print(f"Next posts - brain #{s.get('next', 0)}, relax #{s.get('next_relax', 0)}, social #{s.get('next_social', 0)}.")
+    print("Hand-written brain-snack stock left:", content.stock_left(s.get("next", 0)))
 
 
 # ---------------- local testing ----------------
@@ -234,6 +238,7 @@ if __name__ == "__main__":
     sub = ap.add_subparsers(dest="cmd", required=True)
     p1 = sub.add_parser("prepare"); p1.add_argument("--event", default="workflow_dispatch")
     p1.add_argument("--mode", default="test"); p1.add_argument("--cron", default="")
+    p1.add_argument("--stream", default="brain", choices=["brain", "relax", "social"])
     p2 = sub.add_parser("publish"); p2.add_argument("--base", required=True)
     sub.add_parser("check")
     a = ap.parse_args()

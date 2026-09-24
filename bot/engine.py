@@ -291,10 +291,13 @@ def render(r, out_path, preview_path=None, preview_times=(0.0, 3.0, 6.6)):
     global _BG
     if _BG is None: _BG = make_bg()
     fn = FORMATS[r["type"]]
+    import audio, tempfile, zlib
+    wav = Path(tempfile.gettempdir()) / f"rc_{r['id']}.wav"
+    audio.soundtrack(r, zlib.crc32(r["id"].encode()), wav)
     cmd = ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
-           "-r", str(FPS), "-i", "-", "-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=48000",
+           "-r", str(FPS), "-i", "-", "-i", str(wav),
            "-shortest", "-c:v", "libx264", "-profile:v", "high", "-pix_fmt", "yuv420p", "-crf", "20",
-           "-preset", "medium", "-movflags", "+faststart", "-c:a", "aac", "-b:a", "128k", str(out_path)]
+           "-preset", "medium", "-movflags", "+faststart", "-c:a", "aac", "-b:a", "160k", "-ar", "44100", str(out_path)]
     p = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     prev, pt = [], [int(x * FPS) for x in preview_times]
     for fi in range(int(DUR * FPS)):

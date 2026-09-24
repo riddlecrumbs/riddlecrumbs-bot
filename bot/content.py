@@ -128,6 +128,7 @@ TAGS = {
 
 def caption(it):
     t = it["type"]
+    if t in ("relax", "wyr", "month"): return fun_caption(it)
     tags = it.get("tags", TAGS[t])
     if t == "riddle":
         body = ("Think you've got it? Drop your answer below \U0001F447 No peeking!\n.\n.\n.\n.\n"
@@ -150,3 +151,49 @@ if __name__ == "__main__":
         it = item_for(n)
         print(n, it["type"], it["id"])
     print(stock_left(0))
+
+
+# ---------- zero-effort streams ----------
+RELAX_VARIANTS = ["pendulum", "circle", "sort", "spiro"]
+RELAX_HOOKS = ["Try to look away.", "Watch it loop.", "So satisfying...", "Your brain needs this.", "Just breathe."]
+
+
+def relax_item(k):
+    return {"id": f"x_{RELAX_VARIANTS[k % 4]}_{k}", "type": "relax", "variant": RELAX_VARIANTS[k % 4],
+            "seed": 7000 + k, "hook": RELAX_HOOKS[k % len(RELAX_HOOKS)]}
+
+
+def load_fun():
+    return json.loads((ROOT / "content" / "fun.json").read_text())
+
+
+SOCIAL_PATTERN = ["wyr", "month", "wyr"]
+
+
+def social_item(k):
+    fun = load_fun()
+    fmt = SOCIAL_PATTERN[k % len(SOCIAL_PATTERN)]
+    j = sum(1 for i in range(k) if SOCIAL_PATTERN[i % len(SOCIAL_PATTERN)] == fmt)
+    items = fun[fmt]
+    it = dict(items[j % len(items)]); it["type"] = fmt
+    if j >= len(items): it["id"] += f"_r{j // len(items)}"   # repeats only after the whole bank is used
+    return it
+
+
+def stream_item(stream, k):
+    if stream == "relax": return relax_item(k)
+    if stream == "social": return social_item(k)
+    return item_for(k)
+
+
+def fun_caption(it):
+    t = it["type"]
+    if t == "relax":
+        return ("Could you watch this all day? \U0001F60C\n\nFollow @riddlecrumbs for a daily brain snack \U0001F36A\n\n"
+                "#oddlysatisfying #satisfying #relaxing #loop #calm")
+    if t == "wyr":
+        return (f"Would you rather... {it['a'].lower()} {it['ea']} or {it['b'].lower()} {it['eb']}?\n\n"
+                "Comment A or B \U0001F447 and tag someone who'd pick the other one!\n\n"
+                "#wouldyourather #thisorthat #funquestions #chooseone #tagafriend")
+    return (f"What's your {it['what']}? Comment your month \U0001F447 and tag a friend to find theirs!\n\n"
+            "#birthmonth #whatsyours #funquiz #tagafriend #justforfun")
