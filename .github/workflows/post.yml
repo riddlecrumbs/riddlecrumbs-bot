@@ -1,0 +1,86 @@
+name: Post reel
+
+on:
+  schedule:
+    - cron: "0 7 * * *"    # 8am UK (summer) / 7am (winter)
+    - cron: "0 12 * * *"   # 1pm / 12pm
+    - cron: "0 18 * * *"   # 7pm / 6pm
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "test = check token + render next reel (no posting). post = post the next reel now."
+        type: choice
+        options: [test, post]
+        default: test
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: post-reel
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install tools
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
+          pip install -q -r requirements.txt
+          bash bot/get_fonts.sh
+
+      - name: Check Instagram connection
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+        run: python bot/run.py check
+
+      - name: Decide and render
+        id: prep
+        run: python bot/run.py prepare --event "${{ github.event_name }}" --mode "${{ inputs.mode }}" --cron "${{ github.event.schedule }}"
+
+      - name: Configure Pages
+        if: steps.prep.outputs.go == 'true'
+        uses: actions/configure-pages@v5
+
+      - name: Upload video
+        if: steps.prep.outputs.go == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Publish video to a public link
+        if: steps.prep.outputs.go == 'true'
+        id: deploy
+        uses: actions/deploy-pages@v4
+
+      - name: Show the video link
+        if: steps.prep.outputs.go == 'true'
+        run: echo "Video is at ${{ steps.deploy.outputs.page_url }}${{ steps.prep.outputs.file }}"
+
+      - name: Post to Instagram
+        if: steps.prep.outputs.publish == 'true'
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+        run: python bot/run.py publish --base "${{ steps.deploy.outputs.page_url }}"
+
+      - name: Save progress
+        if: steps.prep.outputs.publish == 'true'
+        run: |
+          git config user.name "riddlecrumbs-bot"
+          git config user.email "riddlecrumbs-bot@users.noreply.github.com"
+          git add state
+          git commit -m "Posted reel #$(python -c 'import json;print(json.load(open("state/state.json"))["next"]-1)')" || exit 0
+          git push
