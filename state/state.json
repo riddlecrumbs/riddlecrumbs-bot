@@ -1,8 +1,15 @@
 {
- "next": 0,
- "start": null,
+ "next": 1,
+ "start": "2026-09-24",
  "paused": false,
  "last_slot": null,
- "token_refreshed": null,
- "log": []
+ "token_refreshed": "2026-09-24T20:43:28+00:00",
+ "log": [
+  {
+   "n": 0,
+   "id": "r_footsteps",
+   "media": "17984494154886622",
+   "at": "2026-09-24T20:43+00:00"
+  }
+ ]
 }
