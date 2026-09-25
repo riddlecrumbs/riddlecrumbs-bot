@@ -2,7 +2,7 @@
  "next": 1,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": null,
+ "last_slot": "2026-09-25-0",
  "token_refreshed": "2026-09-24T20:43:28+00:00",
  "log": [
   {
@@ -10,6 +10,14 @@
    "id": "r_footsteps",
    "media": "17984494154886622",
    "at": "2026-09-24T20:43+00:00"
+  },
+  {
+   "stream": "relax",
+   "n": 0,
+   "id": "x_pendulum_0",
+   "media": "18101837345168583",
+   "at": "2026-09-25T07:11+00:00"
   }
- ]
+ ],
+ "next_relax": 1
 }
