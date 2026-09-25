@@ -2,7 +2,7 @@
  "next": 2,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-09-25-1",
+ "last_slot": "2026-09-25-2",
  "token_refreshed": "2026-09-24T20:43:28+00:00",
  "log": [
   {
@@ -24,7 +24,15 @@
    "id": "q_venus",
    "media": "17881719369688886",
    "at": "2026-09-25T12:02+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 0,
+   "id": "w_pizza_travel",
+   "media": "18396574138206277",
+   "at": "2026-09-25T18:13+00:00"
   }
  ],
- "next_relax": 1
+ "next_relax": 1,
+ "next_social": 1
 }
