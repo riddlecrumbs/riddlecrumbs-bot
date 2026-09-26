@@ -2,7 +2,7 @@
  "next": 3,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-09-26-1",
+ "last_slot": "2026-09-26-2",
  "token_refreshed": "2026-09-24T20:43:28+00:00",
  "log": [
   {
@@ -45,8 +45,15 @@
    "id": "f_octopus",
    "media": "17956617042246312",
    "at": "2026-09-26T12:02+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 1,
+   "id": "m_cookie",
+   "media": "18142689313589122",
+   "at": "2026-09-26T18:12+00:00"
   }
  ],
  "next_relax": 2,
- "next_social": 1
+ "next_social": 2
 }
