@@ -2,7 +2,7 @@
  "next": 2,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-09-25-2",
+ "last_slot": "2026-09-26-0",
  "token_refreshed": "2026-09-24T20:43:28+00:00",
  "log": [
   {
@@ -31,8 +31,15 @@
    "id": "w_pizza_travel",
    "media": "18396574138206277",
    "at": "2026-09-25T18:13+00:00"
+  },
+  {
+   "stream": "relax",
+   "n": 1,
+   "id": "x_circle_1",
+   "media": "17944428195347800",
+   "at": "2026-09-26T07:10+00:00"
   }
  ],
- "next_relax": 1,
+ "next_relax": 2,
  "next_social": 1
 }
