@@ -2,7 +2,7 @@
  "next": 4,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-09-27-2",
+ "last_slot": "2026-09-28-0",
  "token_refreshed": "2026-09-24T20:43:28+00:00",
  "log": [
   {
@@ -73,8 +73,15 @@
    "id": "w_fly_invisible",
    "media": "18092494619177947",
    "at": "2026-09-27T18:12+00:00"
+  },
+  {
+   "stream": "relax",
+   "n": 3,
+   "id": "x_spiro_3",
+   "media": "18123786025910586",
+   "at": "2026-09-28T07:13+00:00"
   }
  ],
- "next_relax": 3,
+ "next_relax": 4,
  "next_social": 3
 }
