@@ -2,7 +2,7 @@
  "next": 5,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-09-28-1",
+ "last_slot": "2026-09-28-2",
  "token_refreshed": "2026-09-24T20:43:28+00:00",
  "log": [
   {
@@ -87,8 +87,15 @@
    "id": "r_towel",
    "media": "17920222677443301",
    "at": "2026-09-28T12:02+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 3,
+   "id": "w_past_future",
+   "media": "17870757999640498",
+   "at": "2026-09-28T18:13+00:00"
   }
  ],
  "next_relax": 4,
- "next_social": 3
+ "next_social": 4
 }
