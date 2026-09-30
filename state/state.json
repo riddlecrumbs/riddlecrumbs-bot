@@ -2,7 +2,7 @@
  "next": 6,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-09-29-2",
+ "last_slot": "2026-09-30-0",
  "token_refreshed": "2026-09-24T20:43:28+00:00",
  "log": [
   {
@@ -115,8 +115,15 @@
    "id": "m_superpower",
    "media": "18033018227889935",
    "at": "2026-09-29T18:14+00:00"
+  },
+  {
+   "stream": "relax",
+   "n": 5,
+   "id": "x_circle_5",
+   "media": "18072329942733239",
+   "at": "2026-09-30T07:13+00:00"
   }
  ],
- "next_relax": 5,
+ "next_relax": 6,
  "next_social": 5
 }
