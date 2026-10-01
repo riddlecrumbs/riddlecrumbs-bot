@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-01-1",
+ "last_slot": "2026-10-01-2",
  "token_refreshed": "2026-09-24T20:43:28+00:00",
  "log": [
   {
@@ -151,6 +151,14 @@
    "key": "q_pacific",
    "media": "18476219746112857",
    "at": "2026-10-01T12:06+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 21,
+   "id": "w_beach_mountain",
+   "key": "w_beach_mountain",
+   "media": "18076328801718873",
+   "at": "2026-10-01T18:17+00:00"
   }
  ],
  "next_relax": 7,
@@ -173,16 +181,17 @@
   "w_fly_invisible",
   "w_past_future",
   "w_pizza_travel",
-  "q_pacific"
+  "q_pacific",
+  "w_beach_mountain"
  ],
  "turns": {
   "brain": 8,
   "relax": 7,
-  "social": 6
+  "social": 7
  },
  "stock": {
   "relax": 26,
   "brain": 68,
-  "social": 42
+  "social": 41
  }
 }
