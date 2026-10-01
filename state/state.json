@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-09-30-2",
+ "last_slot": "2026-10-01-0",
  "token_refreshed": "2026-09-24T20:43:28+00:00",
  "log": [
   {
@@ -136,8 +136,15 @@
    "id": "w_animals_languages",
    "media": "18106727417192201",
    "at": "2026-09-30T18:13+00:00"
+  },
+  {
+   "stream": "relax",
+   "n": 6,
+   "id": "x_sort_6",
+   "media": "18125823562797758",
+   "at": "2026-10-01T07:13+00:00"
   }
  ],
- "next_relax": 6,
+ "next_relax": 7,
  "next_social": 6
 }
