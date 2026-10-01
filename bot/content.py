@@ -1,127 +1,197 @@
-"""Builds the posting queue: hand-written items from content/bank.json interleaved by format,
-plus procedurally generated maths tricks and brain tests that never run out.
+"""What to post next - with a hard rule: nothing is ever posted twice.
 
-Post number n (0-based) always maps to the same reel, so the queue is deterministic and
-state only needs to remember n."""
-import json, random
+Every reel has a "key" (the idea behind it: a riddle, a trick, an animation concept...). The robot keeps a list
+of used keys in state.json and always picks the next unused item. If a stream runs out, it borrows from another
+stream; if everything is used up, it skips the slot rather than repeat anything. New content = refill the banks.
+"""
+import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-PATTERN = ["riddle", "quiz", "fact", "maths", "riddle", "hack", "stroop", "quiz", "riddle", "fact"]
-FALLBACK = {"riddle": "maths", "quiz": "stroop", "fact": "maths", "hack": "stroop"}
 
 
-def load_bank():
-    return json.loads((ROOT / "content" / "bank.json").read_text())
+def load_bank(): return json.loads((ROOT / "content" / "bank.json").read_text())
+def load_fun(): return json.loads((ROOT / "content" / "fun.json").read_text())
 
 
-# ---------- procedural formats (answers computed, so always correct) ----------
-def _pool(kind):
-    if kind == "x11": vals = [10 * a + b for a in range(1, 10) for b in range(1, 10) if a + b <= 9]
-    elif kind == "x5": vals = list(range(24, 98, 2))
-    elif kind == "sq5": vals = [10 * a + 5 for a in range(2, 12)]
-    else: vals = list(range(12, 96, 4))
-    random.Random(kind).shuffle(vals)
-    return vals
+# ---------------------------------------------------------------- maths tricks (each trick used once)
+def _steps(a, b, c, d):
+    return [[0.0, a[0], a[1]], [2.2, b[0], b[1]], [3.6, c[0], c[1]], [5.0, d[0], d[1]]]
 
 
-def maths_item(k):
-    kinds = ["x11", "x5", "sq5", "x11", "x25"]
-    kind = kinds[k % 5]
-    # the j-th time this kind comes up -> the j-th number from a fixed shuffled pool (no repeats until it's used up)
-    j = sum(1 for i in range(k) if kinds[i % 5] == kind)
-    pool = _pool(kind)
-    n = pool[j % len(pool)]
-    if kind == "x11":
-        a, b = divmod(n, 10)
-        steps = [[0.0, f"{n} × 11", ""], [2.2, f"{a}  □  {b}", "Split the digits"],
-                 [3.6, f"{a} ({a}+{b}) {b}", "Add them, put it in the middle"], [5.0, f"{n * 11}", "Done!"]]
-        return {"id": f"m_x11_{n}", "type": "maths", "q": "Times *11* in your head. Instantly.", "steps": steps,
-                "cap": f"Two-digit number × 11: split the digits and put their sum in the middle. {n} × 11 → {a} ({a + b}) {b} = {n * 11}.\n"
-                       "If the middle adds up to 10 or more, carry the 1: 58 × 11 → 5 (13) 8 → 638."}
-    if kind == "x5":
-        steps = [[0.0, f"{n} × 5", ""], [2.2, f"{n} ÷ 2 = {n // 2}", "Halve it"],
-                 [3.6, f"{n // 2} → {n // 2}0", "Stick a zero on the end"], [5.0, f"{n * 5}", "Done!"]]
-        return {"id": f"m_x5_{n}", "type": "maths", "q": "Times *5* without a calculator.", "steps": steps,
-                "cap": f"×5 is the same as ×10 then ÷2. So halve it and add a zero: {n} → {n // 2} → {n * 5}.\n"
-                       "Odd number? Halve it to get a .5, e.g. 37 → 18.5 → 185."}
-    if kind == "sq5":
-        a = n // 10
-        steps = [[0.0, f"{n}²", ""], [2.2, f"{a} × {a + 1} = {a * (a + 1)}", "First digit × the next number"],
-                 [3.6, f"{a * (a + 1)} | 25", "Put 25 on the end"], [5.0, f"{n * n}", "Done!"]]
-        return {"id": f"m_sq5_{n}", "type": "maths", "q": "Square numbers ending in *5.* Instantly.", "steps": steps,
-                "cap": f"For any number ending in 5: multiply the first digit by the next number up, then write 25 after it. {n}² → {a}×{a + 1} = {a * (a + 1)} → {n * n}."}
-    # x25
-    steps = [[0.0, f"{n} × 25", ""], [2.2, f"{n} ÷ 4 = {n // 4}", "Divide by 4"],
-             [3.6, f"{n // 4} → {n // 4}00", "Add two zeros"], [5.0, f"{n * 25}", "Done!"]]
-    return {"id": f"m_x25_{n}", "type": "maths", "q": "Times *25* in your head.", "steps": steps,
-            "cap": f"25 is 100 ÷ 4. So divide by 4 and add two zeros: {n} → {n // 4} → {n * 25}. Think of it as counting quarters in pounds."}
+def maths_tricks():
+    T = []
+    def add(key, q, steps, cap, answer_check):
+        assert answer_check, key
+        T.append({"id": key, "key": key, "type": "maths", "q": q, "steps": steps, "cap": cap})
+    add("trick_x11", "Times *11* in your head. Instantly.", _steps(("36 × 11", ""), ("3  □  6", "Split the digits"), ("3 (3+6) 6", "Add them, put it in the middle"), ("396", "Done!")),
+        "Two-digit number × 11: split the digits and put their sum in the middle. 36 × 11 → 3 (9) 6 = 396.", 36 * 11 == 396)
+    add("trick_x5", "Times *5* without a calculator.", _steps(("68 × 5", ""), ("68 ÷ 2 = 34", "Halve it"), ("34 → 340", "Stick a zero on the end"), ("340", "Done!")),
+        "×5 is the same as ×10 then ÷2. So halve it and add a zero: 68 → 34 → 340. Odd number? 37 → 18.5 → 185.", 68 * 5 == 340)
+    add("trick_sq5", "Square numbers ending in *5.* Instantly.", _steps(("65²", ""), ("6 × 7 = 42", "First digit × the next number"), ("42 | 25", "Put 25 on the end"), ("4225", "Done!")),
+        "Any number ending in 5: multiply the first digit by the next number up, then write 25 after it. 65² → 6×7 = 42 → 4225.", 65 ** 2 == 4225)
+    add("trick_x25", "Times *25* in your head.", _steps(("48 × 25", ""), ("48 ÷ 4 = 12", "Divide by 4"), ("12 → 1200", "Add two zeros"), ("1200", "Done!")),
+        "25 is 100 ÷ 4. So divide by 4 and add two zeros: 48 → 12 → 1200. Like counting quarters in pounds.", 48 * 25 == 1200)
+    add("trick_x9", "Times *9* the easy way.", _steps(("47 × 9", ""), ("47 × 10 = 470", "Times 10 first"), ("470 − 47", "Then take one 47 away"), ("423", "Done!")),
+        "×9 is ×10 minus one lot of the number. 47 × 9 → 470 − 47 = 423.", 47 * 9 == 423)
+    add("trick_x99", "Times *99* in seconds.", _steps(("34 × 99", ""), ("34 × 100 = 3400", "Times 100 first"), ("3400 − 34", "Take one 34 away"), ("3366", "Done!")),
+        "×99 is ×100 minus the number once. 34 × 99 → 3400 − 34 = 3366.", 34 * 99 == 3366)
+    add("trick_x101", "Times *101*? Just write it twice.", _steps(("47 × 101", ""), ("47 | 47", "Write the number twice"), ("4747", "That's it"), ("4747", "Done!")),
+        "Any two-digit number × 101 is just that number written twice: 47 × 101 = 4747, 83 × 101 = 8383.", 47 * 101 == 4747)
+    add("trick_x4", "Times *4*? Double, then double.", _steps(("37 × 4", ""), ("37 → 74", "Double it"), ("74 → 148", "Double it again"), ("148", "Done!")),
+        "×4 is just doubling twice. 37 → 74 → 148. Works for ×8 too: double three times.", 37 * 4 == 148)
+    add("trick_div5", "Divide by *5* in your head.", _steps(("140 ÷ 5", ""), ("140 × 2 = 280", "Double it"), ("280 ÷ 10", "Move the decimal one place"), ("28", "Done!")),
+        "÷5 is the same as ×2 then ÷10. 140 → 280 → 28.", 140 / 5 == 28)
+    add("trick_percent", "*8% of 50?* Flip it.", _steps(("8% of 50", ""), ("= 50% of 8", "Swap the numbers"), ("half of 8", "Much easier"), ("4", "Done!")),
+        "x% of y is always the same as y% of x. So 8% of 50 = 50% of 8 = 4. Try it with 4% of 75!", 0.08 * 50 == 4)
+    add("trick_x15", "Times *15* in your head.", _steps(("24 × 15", ""), ("24 + 12 = 36", "Add half of it"), ("36 × 10", "Then times 10"), ("360", "Done!")),
+        "×15 = ×10 plus half again. 24 → 24 + 12 = 36 → 360.", 24 * 15 == 360)
+    add("trick_near100", "Multiply numbers *near 100.*", _steps(("97 × 96", ""), ("−3   and   −4", "How far below 100?"), ("96−3 = 93 | 3×4 = 12", "Cross-subtract | multiply gaps"), ("9312", "Done!")),
+        "For numbers just under 100: subtract one gap from the other number, then multiply the gaps. 97 × 96 → 93 | 12 → 9312.", 97 * 96 == 9312)
+    add("trick_x12", "Times *12* without a calculator.", _steps(("23 × 12", ""), ("23 × 10 = 230", "Times 10"), ("23 × 2 = 46", "Times 2"), ("276", "Add them: done!")),
+        "×12 = ×10 + ×2. 23 × 12 → 230 + 46 = 276.", 23 * 12 == 276)
+    add("trick_sq50", "Square numbers *near 50.*", _steps(("48²", ""), ("25 − 2 = 23", "25 minus the gap from 50"), ("23 | 2² = 04", "Then square the gap"), ("2304", "Done!")),
+        "For numbers near 50: start from 25, adjust by the gap, then add the gap squared as two digits. 48² → 23 | 04 → 2304.", 48 ** 2 == 2304)
+    add("trick_div3", "Is it divisible by *3?*", _steps(("4,572 ÷ 3?", ""), ("4+5+7+2 = 18", "Add up the digits"), ("18 ÷ 3 = 6", "Is that divisible by 3?"), ("Yes!", "Then the big number is too")),
+        "A number divides by 3 exactly when its digits add up to a multiple of 3. 4,572 → 18 → yes (4,572 ÷ 3 = 1,524).", 4572 % 3 == 0)
+    add("trick_tip15", "Work out a *15% tip* fast.", _steps(("15% of £46", ""), ("10% = £4.60", "Move the decimal"), ("5% = £2.30", "Half of that"), ("£6.90", "Add them: done!")),
+        "15% = 10% + 5%. 10% of £46 is £4.60, half of that is £2.30, together £6.90.", abs(46 * 0.15 - 6.90) < 1e-9)
+    return T
 
 
-STROOP_COLOURS = {"RED": (255, 92, 92), "BLUE": (92, 172, 255), "GREEN": (80, 222, 124),
-                  "YELLOW": (255, 212, 64), "PINK": (255, 128, 200), "ORANGE": (255, 150, 60)}
+# ---------------------------------------------------------------- brain tests (each used once)
+def brain_tests():
+    return [
+        {"id": "test_countf", "key": "test_countf", "type": "test", "kind": "countf",
+         "q": "Count the *F's* in this sentence.",
+         "text": "FINISHED FILES ARE THE RESULT OF YEARS OF SCIENTIFIC STUDY COMBINED WITH THE EXPERIENCE OF YEARS",
+         "answer": "There are 6!",
+         "cap": "Most people count 3. Your brain skims over the F in \"of\" because it sounds like a V. Did you get 6?",
+         "tags": "#braintest #puzzle #brain #mindgames #challenge"},
+        {"id": "test_thethe", "key": "test_thethe", "type": "test", "kind": "thethe",
+         "q": "Read the sign out loud.",
+         "answer": "Look again: \"THE\" is there twice!",
+         "cap": "Your brain predicts familiar phrases and skips the repeated word. Did you spot it first time?",
+         "tags": "#braintest #illusion #brain #mindgames #didyouknow"},
+        {"id": "test_lines", "key": "test_lines", "type": "test", "kind": "lines",
+         "q": "Which line is *longer?*",
+         "answer": "They're exactly the same length!",
+         "cap": "This is the Müller-Lyer illusion: the arrow ends trick your brain into misjudging length. Did it fool you?",
+         "tags": "#opticalillusion #illusion #brain #mindblown #braintest"},
+        {"id": "test_circles", "key": "test_circles", "type": "test", "kind": "circles",
+         "q": "Which *orange circle* is bigger?",
+         "answer": "They're exactly the same size!",
+         "cap": "This is the Ebbinghaus illusion: the circles around them change how big they look. Which one did you pick?",
+         "tags": "#opticalillusion #illusion #brain #mindblown #braintest"},
+        {"id": "test_scramble", "key": "test_scramble", "type": "test", "kind": "scramble",
+         "q": "Can you read this?",
+         "text": "Yuor barin is so cevler it can raed tihs eevn wehn the lterets are all mexid up.",
+         "answer": "Your brain reads whole words, not letters.",
+         "cap": "As long as the first and last letters stay put, most people can read scrambled words surprisingly easily. Could you?",
+         "tags": "#braintest #brain #mindblown #canyouread #challenge"},
+    ]
 
 
-def stroop_item(k):
-    rnd = random.Random(5000 + k)
-    names = list(STROOP_COLOURS)
-    ws = names[:]; rnd.shuffle(ws)            # each colour word appears once
-    while True:                               # colours: a shuffle where no word gets its own colour
-        cs = names[:]; rnd.shuffle(cs)
-        if all(a != b for a, b in zip(ws, cs)): break
-    words = [[w, list(STROOP_COLOURS[c])] for w, c in zip(ws, cs)]
-    return {"id": f"s_{k}", "type": "stroop", "words": words,
-            "cap": "This is the Stroop effect: your brain reads words automatically, so naming the colour means fighting your own reflex. How fast did you get through it?",
-            "tags": "#braintest #psychology #brain #mindgames #challenge"}
+# ---------------------------------------------------------------- satisfying concepts (each used once)
+FUN_CONCEPTS = {  # the five drawn in fun.py
+    "orbits": ("Try to look away.", "sunset"), "ripple": ("Your brain needs this.", "neon"),
+    "lissajous": ("Can't stop watching.", "candy"), "squares": ("This is so smooth.", "aurora"),
+    "flower": ("Just breathe.", "brand"),
+}
+RELAX_ORDER = ["orbits", "newton", "galton", "flower", "gears", "sand", "lissajous", "maze", "fireworks", "ripple",
+               "dominoes", "tree", "packing", "corner", "hilbert", "squares", "lava", "stringart", "cells", "globe",
+               "bubbles", "kaleido", "paint", "blocks", "ripples", "assemble"]
+RETIRED_RELAX = {"pendulum", "circle", "sort", "spiro"}   # already posted - never used again
 
 
-# ---------- queue ----------
-def _plan(n, bank):
-    """Effective format for each post 0..n (hand-written format, or its fallback once stock runs out),
-    and how many times that effective format was used before."""
-    used = {f: 0 for f in PATTERN}
-    eff_count = {}
-    plan = []
-    for i in range(n + 1):
-        fmt = PATTERN[i % len(PATTERN)]
-        if fmt in ("maths", "stroop") or used[fmt] < len(bank.get(fmt, [])):
-            eff = fmt
-            k = used[fmt] if fmt not in ("maths", "stroop") else eff_count.get(fmt, 0)
-        else:
-            eff = FALLBACK[fmt]
-            k = eff_count.get(eff, 0)
-        if fmt not in ("maths", "stroop"): used[fmt] += 1
-        if eff in ("maths", "stroop"): eff_count[eff] = eff_count.get(eff, 0) + 1
-        plan.append((fmt, eff, k))
-    return plan
-
-
-def item_for(n):
-    """The reel for post number n."""
-    bank = load_bank()
-    fmt, eff, k = _plan(n, bank)[n]
-    if eff == "maths": return maths_item(k)
-    if eff == "stroop": return stroop_item(k)
-    it = dict(bank[fmt][k]); it["type"] = fmt
-    return it
-
-
-def stock_left(n):
-    """How many hand-written posts remain from post n onward, per format."""
-    bank = load_bank()
-    out = {}
-    for fmt in ("riddle", "quiz", "fact", "hack"):
-        used = sum(1 for i in range(n) if PATTERN[i % len(PATTERN)] == fmt)
-        out[fmt] = max(0, len(bank.get(fmt, [])) - used)
+def relax_library():
+    import loops
+    out = []
+    for i, key in enumerate(RELAX_ORDER):
+        hook, pal = FUN_CONCEPTS.get(key) or (loops.CONCEPTS[key]["hook"], loops.CONCEPTS[key]["pal"])
+        out.append({"id": f"x_{key}", "key": f"relax_{key}", "type": "relax", "variant": key, "seed": 9000 + i,
+                    "hook": hook, "pal": pal})
     return out
 
 
+# ---------------------------------------------------------------- libraries per stream
+BRAIN_PATTERN = ["riddle", "quiz", "fact", "maths", "riddle", "hack", "test", "quiz", "riddle", "fact"]
+
+
+def brain_pools():
+    bank = load_bank()
+    pools = {f: [dict(it, type=f, key=it["id"]) for it in bank.get(f, [])] for f in ("riddle", "quiz", "fact", "hack")}
+    pools["maths"] = maths_tricks()
+    pools["test"] = brain_tests()
+    return pools
+
+
+def social_pools():
+    fun = load_fun()
+    return {f: [dict(it, type=f, key=it["id"]) for it in fun[f]] for f in ("wyr", "month")}
+
+
+SOCIAL_PATTERN = ["wyr", "month", "wyr"]
+
+
+def _pick_patterned(pools, pattern, used, turn):
+    """Follow the format pattern from position `turn`; take the first unused item of that format,
+    moving on through the pattern if a format has run dry."""
+    for step in range(len(pattern)):
+        fmt = pattern[(turn + step) % len(pattern)]
+        for it in pools.get(fmt, []):
+            if it["key"] not in used: return it
+    return None
+
+
+def pick(stream, used, turns):
+    """Next never-posted item for a stream (turns = how many posts that stream has made)."""
+    if stream == "relax":
+        for it in relax_library():
+            if it["key"] not in used: return it
+        return None
+    if stream == "social":
+        return _pick_patterned(social_pools(), SOCIAL_PATTERN, used, turns)
+    return _pick_patterned(brain_pools(), BRAIN_PATTERN, used, turns)
+
+
+def next_item(stream, used, turns):
+    """Own stream first; if it's empty, borrow from the others; None if absolutely everything is used."""
+    order = [stream] + [s for s in ("relax", "brain", "social") if s != stream]
+    for s in order:
+        it = pick(s, used, turns.get(s, 0))
+        if it: return s, it
+    return None, None
+
+
+def stock(used):
+    """Unused items left per stream."""
+    rl = sum(1 for it in relax_library() if it["key"] not in used)
+    br = sum(1 for p in brain_pools().values() for it in p if it["key"] not in used)
+    so = sum(1 for p in social_pools().values() for it in p if it["key"] not in used)
+    return {"relax": rl, "brain": br, "social": so}
+
+
+# keys of everything posted before this system existed (from the robot's log)
+LEGACY_KEYS = {
+    "r_footsteps": "r_footsteps", "q_venus": "q_venus", "f_octopus": "f_octopus", "m_x11_36": "trick_x11",
+    "r_towel": "r_towel", "h_reopen_tab": "h_reopen_tab", "s_0": "test_stroop",
+}
+
+
+def legacy_key(log_id):
+    if log_id.startswith("x_"):
+        v = log_id.split("_")[1]
+        return f"relax_{v}"
+    return LEGACY_KEYS.get(log_id, log_id)
+
+
+# ---------------------------------------------------------------- captions
 TAGS = {
     "riddle": "#riddles #brainteaser #riddle #puzzle #thinkfast",
     "quiz": "#quiz #trivia #didyouknow #brainteaser #learnsomethingnew",
     "fact": "#didyouknow #funfacts #mindblown #learnsomethingnew #science",
     "maths": "#mathtricks #maths #mentalmath #mathhacks #learnsomethingnew",
-    "stroop": "#braintest #psychology #brain #mindgames #challenge",
     "hack": "#lifehacks #techtips #computertips #productivity #shortcuts",
 }
 
@@ -129,6 +199,7 @@ TAGS = {
 def caption(it):
     t = it["type"]
     if t in ("relax", "wyr", "month"): return fun_caption(it)
+    if t == "test": return f"{it['cap']}\n\nFollow @riddlecrumbs for a daily brain snack \U0001F36A\n\n{it['tags']}"
     tags = it.get("tags", TAGS[t])
     if t == "riddle":
         body = ("Think you've got it? Drop your answer below \U0001F447 No peeking!\n.\n.\n.\n.\n"
@@ -142,55 +213,15 @@ def caption(it):
     elif t == "hack":
         body = f"{it.get('cap', '')}\n\nSend this to someone who needs it \U0001F4BB".strip()
     else:
-        body = it["cap"]
+        body = it.get("cap", "")
     return f"{body}\n\n{tags}"
-
-
-if __name__ == "__main__":
-    for n in range(12):
-        it = item_for(n)
-        print(n, it["type"], it["id"])
-    print(stock_left(0))
-
-
-# ---------- zero-effort streams ----------
-RELAX_VARIANTS = ["pendulum", "circle", "sort", "spiro"]
-RELAX_HOOKS = ["Try to look away.", "Watch it loop.", "So satisfying...", "Your brain needs this.", "Just breathe."]
-
-
-def relax_item(k):
-    return {"id": f"x_{RELAX_VARIANTS[k % 4]}_{k}", "type": "relax", "variant": RELAX_VARIANTS[k % 4],
-            "seed": 7000 + k, "hook": RELAX_HOOKS[k % len(RELAX_HOOKS)]}
-
-
-def load_fun():
-    return json.loads((ROOT / "content" / "fun.json").read_text())
-
-
-SOCIAL_PATTERN = ["wyr", "month", "wyr"]
-
-
-def social_item(k):
-    fun = load_fun()
-    fmt = SOCIAL_PATTERN[k % len(SOCIAL_PATTERN)]
-    j = sum(1 for i in range(k) if SOCIAL_PATTERN[i % len(SOCIAL_PATTERN)] == fmt)
-    items = fun[fmt]
-    it = dict(items[j % len(items)]); it["type"] = fmt
-    if j >= len(items): it["id"] += f"_r{j // len(items)}"   # repeats only after the whole bank is used
-    return it
-
-
-def stream_item(stream, k):
-    if stream == "relax": return relax_item(k)
-    if stream == "social": return social_item(k)
-    return item_for(k)
 
 
 def fun_caption(it):
     t = it["type"]
     if t == "relax":
         return ("Could you watch this all day? \U0001F60C\n\nFollow @riddlecrumbs for a daily brain snack \U0001F36A\n\n"
-                "#oddlysatisfying #satisfying #relaxing #loop #calm")
+                "#oddlysatisfying #satisfying #relaxing #calm #mesmerizing")
     if t == "wyr":
         return (f"Would you rather... {it['a'].lower()} {it['ea']} or {it['b'].lower()} {it['eb']}?\n\n"
                 "Comment A or B \U0001F447 and tag someone who'd pick the other one!\n\n"

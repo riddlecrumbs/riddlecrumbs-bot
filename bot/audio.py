@@ -242,6 +242,8 @@ def events_for(r):
     elif t == "month":
         ev += [(0.25 + 0.16 * i, "note", 0.12, 72 + [0, 2, 4, 7, 9][i % 5] + 12 * (i // 5)) for i in range(12)]
         ev += [(2.8, "pop", 0.3)]
+    elif t == "test":
+        ev += [(1.0 + i, "tick", 0.45) for i in range(4)] + [(4.6, "correct", 0.55), (5.5, "pop", 0.3)]
     elif t == "hack":
         for row, rw in enumerate(r["rows"]):
             t0 = rw[2] if len(rw) > 2 else 1.2 + 1.4 * row
@@ -255,12 +257,12 @@ def soundtrack(r, seed, out_wav):
     rng = np.random.default_rng(seed)
     # each format gets its own signature sound (the key still varies per reel)
     style = {"riddle": "mallet", "quiz": "bounce", "fact": "lofi", "maths": "mallet",
-             "stroop": "bounce", "hack": "lofi", "relax": "ambient", "wyr": "bounce", "month": "mallet"}.get(r["type"], STYLES[seed % len(STYLES)])
+             "stroop": "bounce", "hack": "lofi", "relax": "ambient", "wyr": "bounce", "month": "mallet", "test": "bounce"}.get(r["type"], STYLES[seed % len(STYLES)])
     root = 60 + [0, 2, 5, 7, -3][seed % 5]            # C, D, F, G, A
     bed = music(style, root, rng)
     # duck the music while the countdown ticks, so the ticks read clearly
     duck = np.ones(N)
-    if r["type"] in ("riddle", "quiz"):
+    if r["type"] in ("riddle", "quiz", "test"):
         tt = _t(N)
         duck = np.where((tt > 1.3) & (tt < 5.4), 0.6, 1.0)
         duck = np.convolve(duck, np.ones(2000) / 2000, mode="same")

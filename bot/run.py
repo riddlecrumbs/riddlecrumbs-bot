@@ -30,14 +30,18 @@ MOCK = os.environ.get("MOCK_API") == "1"
 # ---------------- helpers ----------------
 def load_state():
     if STATE.exists():
-        return json.loads(STATE.read_text())
+        s = json.loads(STATE.read_text())
+        if "used" not in s:   # one-time upgrade: remember everything already posted so it's never repeated
+            s["used"] = sorted({content.legacy_key(e["id"]) for e in s.get("log", [])})
+            s["turns"] = {"brain": s.get("next", 0), "relax": s.get("next_relax", 0), "social": s.get("next_social", 0)}
+        return s
     return {"next": 0, "next_relax": 0, "next_social": 0, "start": None, "paused": False,
             "last_slot": None, "token_refreshed": None, "log": []}
 
 
 def save_state(s):
     STATE.parent.mkdir(exist_ok=True)
-    s["log"] = s["log"][-300:]
+    s["log"] = s["log"][-1000:]   # "used" is never trimmed
     STATE.write_text(json.dumps(s, indent=1, ensure_ascii=False) + "\n")
 
 
@@ -148,11 +152,16 @@ def cmd_prepare(a):
         gh_output(go="false", publish="false"); return
 
     stream = STREAM_OF_SLOT[SLOTS[a.cron.strip()]] if a.event == "schedule" else (a.stream or "brain")
-    n = s.get(COUNTER[stream], 0)
-    it = content.stream_item(stream, n)
+    used = set(s.get("used", []))
+    src, it = content.next_item(stream, used, s.get("turns", {}))
+    if it is None:
+        print("::warning::Every reel in the library has been posted - skipping rather than repeating. Time for a refill!")
+        gh_output(go="false", publish="false"); return
+    if src != stream: print(f"The {stream} library is used up, so this slot borrows a {src} reel instead.")
+    n = len(s.get("log", []))
     import engine, fun  # noqa: F401  (fun registers the extra formats)
     SITE.mkdir(exist_ok=True)
-    fname = f"{stream[0]}{n:04d}-{it['id']}.mp4"
+    fname = f"{src[0]}{n:04d}-{it['id']}.mp4"
     t0 = time.time()
     engine.render(it, SITE / fname)
     print(f"Rendered post #{n}: {it['type']} / {it['id']} in {time.time() - t0:.0f}s")
@@ -160,11 +169,13 @@ def cmd_prepare(a):
     (SITE / "index.html").write_text("<!doctype html><title>Riddle Crumbs</title><p>Nothing to see here.</p>")
     cover_ms = {"quiz": 2500, "maths": 2600, "fact": 3200, "stroop": 2500, "hack": 3000,
                 "relax": 2500, "wyr": 2500, "month": 3200}.get(it["type"], 0)
-    PENDING.write_text(json.dumps({"n": n, "stream": stream, "id": it["id"], "type": it["type"], "file": fname,
+    PENDING.write_text(json.dumps({"n": n, "stream": src, "key": it["key"], "id": it["id"], "type": it["type"], "file": fname,
                                    "caption": content.caption(it), "thumb_offset": cover_ms,
                                    "slot": f"{today().isoformat()}-{SLOTS.get(a.cron.strip())}" if a.event == "schedule" else None},
                                   ensure_ascii=False, indent=1))
-    if stream == "brain": print("Hand-written stock left after this post:", content.stock_left(n + 1))
+    left = content.stock(used | {it["key"]})
+    print("Unused reels left after this one:", left)
+    if min(left.values()) <= 5: print(f"::warning::Running low on new content: {left}. Ask for a refill.")
     gh_output(go="true", publish="true" if publish else "false", file=fname)
 
 
@@ -202,10 +213,12 @@ def cmd_publish(a):
         raise SystemExit("Timed out waiting for Instagram to process the video.")
     media = api("POST", f"{uid}/media_publish", creation_id=cid, access_token=tok)["id"]
     print(f"Published! media id {media}")
-    s[COUNTER[p.get("stream", "brain")]] = p["n"] + 1
+    s.setdefault("used", []).append(p["key"])
+    s.setdefault("turns", {}); s["turns"][p["stream"]] = s["turns"].get(p["stream"], 0) + 1
+    s["stock"] = content.stock(set(s["used"]))
     if not s["start"]: s["start"] = today().isoformat()
     if p.get("slot"): s["last_slot"] = p["slot"]
-    s["log"].append({"stream": p.get("stream", "brain"), "n": p["n"], "id": p["id"], "media": media,
+    s["log"].append({"stream": p["stream"], "n": p["n"], "id": p["id"], "key": p["key"], "media": media,
                      "at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes")})
     maybe_refresh(tok, s)
     save_state(s)
@@ -215,8 +228,7 @@ def cmd_check(a):
     tok, me = get_token_and_user()
     print(f"Token works. Connected to @{me.get('username')} (id {me.get('user_id')}).")
     s = load_state()
-    print(f"Next posts - brain #{s.get('next', 0)}, relax #{s.get('next_relax', 0)}, social #{s.get('next_social', 0)}.")
-    print("Hand-written brain-snack stock left:", content.stock_left(s.get("next", 0)))
+    print(f"Posted so far: {len(s.get('used', []))} unique reels. Unused reels left:", content.stock(set(s.get("used", []))))
 
 
 # ---------------- local testing ----------------
