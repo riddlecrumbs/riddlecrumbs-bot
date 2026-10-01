@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-01-0",
+ "last_slot": "2026-10-01-1",
  "token_refreshed": "2026-09-24T20:43:28+00:00",
  "log": [
   {
@@ -143,8 +143,46 @@
    "id": "x_sort_6",
    "media": "18125823562797758",
    "at": "2026-10-01T07:13+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 20,
+   "id": "q_pacific",
+   "key": "q_pacific",
+   "media": "18476219746112857",
+   "at": "2026-10-01T12:06+00:00"
   }
  ],
  "next_relax": 7,
- "next_social": 6
+ "next_social": 6,
+ "used": [
+  "f_octopus",
+  "h_reopen_tab",
+  "m_cookie",
+  "m_superpower",
+  "q_venus",
+  "r_footsteps",
+  "r_towel",
+  "relax_circle",
+  "relax_pendulum",
+  "relax_sort",
+  "relax_spiro",
+  "test_stroop",
+  "trick_x11",
+  "w_animals_languages",
+  "w_fly_invisible",
+  "w_past_future",
+  "w_pizza_travel",
+  "q_pacific"
+ ],
+ "turns": {
+  "brain": 8,
+  "relax": 7,
+  "social": 6
+ },
+ "stock": {
+  "relax": 26,
+  "brain": 68,
+  "social": 42
+ }
 }
