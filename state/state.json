@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-02-0",
+ "last_slot": "2026-10-02-1",
  "token_refreshed": "2026-10-02T07:13:41+00:00",
  "log": [
   {
@@ -167,6 +167,14 @@
    "key": "relax_orbits",
    "media": "18122994344294488",
    "at": "2026-10-02T07:13+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 23,
+   "id": "r_piano",
+   "key": "r_piano",
+   "media": "18127554766885782",
+   "at": "2026-10-02T12:03+00:00"
   }
  ],
  "next_relax": 7,
@@ -191,16 +199,17 @@
   "w_pizza_travel",
   "q_pacific",
   "w_beach_mountain",
-  "relax_orbits"
+  "relax_orbits",
+  "r_piano"
  ],
  "turns": {
-  "brain": 8,
+  "brain": 9,
   "relax": 8,
   "social": 7
  },
  "stock": {
   "relax": 25,
-  "brain": 68,
+  "brain": 67,
   "social": 41
  }
 }
