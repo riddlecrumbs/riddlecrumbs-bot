@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-02-2",
+ "last_slot": "2026-10-03-0",
  "token_refreshed": "2026-10-02T07:13:41+00:00",
  "log": [
   {
@@ -183,6 +183,14 @@
    "key": "m_pet",
    "media": "18094567508433892",
    "at": "2026-10-02T18:14+00:00"
+  },
+  {
+   "stream": "relax",
+   "n": 25,
+   "id": "x_newton",
+   "key": "relax_newton",
+   "media": "18096726671380562",
+   "at": "2026-10-03T07:15+00:00"
   }
  ],
  "next_relax": 7,
@@ -209,15 +217,16 @@
   "w_beach_mountain",
   "relax_orbits",
   "r_piano",
-  "m_pet"
+  "m_pet",
+  "relax_newton"
  ],
  "turns": {
   "brain": 9,
-  "relax": 8,
+  "relax": 9,
   "social": 8
  },
  "stock": {
-  "relax": 25,
+  "relax": 24,
   "brain": 67,
   "social": 40
  }
