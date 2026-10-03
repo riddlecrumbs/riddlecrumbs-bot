@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-03-1",
+ "last_slot": "2026-10-03-2",
  "token_refreshed": "2026-10-02T07:13:41+00:00",
  "log": [
   {
@@ -199,6 +199,14 @@
    "key": "f_banana",
    "media": "17959708503218031",
    "at": "2026-10-03T14:51+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 27,
+   "id": "w_summer_winter",
+   "key": "w_summer_winter",
+   "media": "18092942339673747",
+   "at": "2026-10-03T22:08+00:00"
   }
  ],
  "next_relax": 7,
@@ -227,16 +235,17 @@
   "r_piano",
   "m_pet",
   "relax_newton",
-  "f_banana"
+  "f_banana",
+  "w_summer_winter"
  ],
  "turns": {
   "brain": 10,
   "relax": 9,
-  "social": 8
+  "social": 9
  },
  "stock": {
   "relax": 24,
   "brain": 66,
-  "social": 40
+  "social": 39
  }
 }
