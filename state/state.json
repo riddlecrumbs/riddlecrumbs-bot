@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-05-0",
+ "last_slot": "2026-10-05-1",
  "token_refreshed": "2026-10-02T07:13:41+00:00",
  "log": [
   {
@@ -239,6 +239,14 @@
    "key": "relax_flower",
    "media": "17896790847672044",
    "at": "2026-10-05T07:17+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 32,
+   "id": "q_bones",
+   "key": "q_bones",
+   "media": "18096279419386484",
+   "at": "2026-10-05T12:04+00:00"
   }
  ],
  "next_relax": 7,
@@ -272,16 +280,17 @@
   "relax_galton",
   "r_clock",
   "w_sweet_savoury",
-  "relax_flower"
+  "relax_flower",
+  "q_bones"
  ],
  "turns": {
-  "brain": 11,
+  "brain": 12,
   "relax": 11,
   "social": 10
  },
  "stock": {
   "relax": 22,
-  "brain": 65,
+  "brain": 64,
   "social": 38
  }
 }
