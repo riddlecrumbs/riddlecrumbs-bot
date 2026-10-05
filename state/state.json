@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-05-1",
+ "last_slot": "2026-10-05-2",
  "token_refreshed": "2026-10-02T07:13:41+00:00",
  "log": [
   {
@@ -247,6 +247,14 @@
    "key": "q_bones",
    "media": "18096279419386484",
    "at": "2026-10-05T12:04+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 33,
+   "id": "m_holiday",
+   "key": "m_holiday",
+   "media": "18452475733133502",
+   "at": "2026-10-05T18:15+00:00"
   }
  ],
  "next_relax": 7,
@@ -281,16 +289,17 @@
   "r_clock",
   "w_sweet_savoury",
   "relax_flower",
-  "q_bones"
+  "q_bones",
+  "m_holiday"
  ],
  "turns": {
   "brain": 12,
   "relax": 11,
-  "social": 10
+  "social": 11
  },
  "stock": {
   "relax": 22,
   "brain": 64,
-  "social": 38
+  "social": 37
  }
 }
