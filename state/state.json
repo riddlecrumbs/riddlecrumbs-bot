@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-04-2",
+ "last_slot": "2026-10-05-0",
  "token_refreshed": "2026-10-02T07:13:41+00:00",
  "log": [
   {
@@ -231,6 +231,14 @@
    "key": "w_sweet_savoury",
    "media": "17867927523663012",
    "at": "2026-10-04T21:10+00:00"
+  },
+  {
+   "stream": "relax",
+   "n": 31,
+   "id": "x_flower",
+   "key": "relax_flower",
+   "media": "17896790847672044",
+   "at": "2026-10-05T07:17+00:00"
   }
  ],
  "next_relax": 7,
@@ -263,15 +271,16 @@
   "w_summer_winter",
   "relax_galton",
   "r_clock",
-  "w_sweet_savoury"
+  "w_sweet_savoury",
+  "relax_flower"
  ],
  "turns": {
   "brain": 11,
-  "relax": 10,
+  "relax": 11,
   "social": 10
  },
  "stock": {
-  "relax": 23,
+  "relax": 22,
   "brain": 65,
   "social": 38
  }
