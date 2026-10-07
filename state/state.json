@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-06-2",
+ "last_slot": "2026-10-07-0",
  "token_refreshed": "2026-10-02T07:13:41+00:00",
  "log": [
   {
@@ -279,6 +279,14 @@
    "key": "w_cat_dog",
    "media": "18095291183555335",
    "at": "2026-10-06T18:12+00:00"
+  },
+  {
+   "stream": "relax",
+   "n": 37,
+   "id": "x_sand",
+   "key": "relax_sand",
+   "media": "18151185961499507",
+   "at": "2026-10-07T07:14+00:00"
   }
  ],
  "next_relax": 7,
@@ -317,15 +325,16 @@
   "m_holiday",
   "relax_gears",
   "f_venusday",
-  "w_cat_dog"
+  "w_cat_dog",
+  "relax_sand"
  ],
  "turns": {
   "brain": 13,
-  "relax": 12,
+  "relax": 13,
   "social": 12
  },
  "stock": {
-  "relax": 21,
+  "relax": 20,
   "brain": 63,
   "social": 36
  }
