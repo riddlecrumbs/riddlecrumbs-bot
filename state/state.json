@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-07-1",
+ "last_slot": "2026-10-07-2",
  "token_refreshed": "2026-10-02T07:13:41+00:00",
  "log": [
   {
@@ -295,6 +295,14 @@
    "key": "trick_x5",
    "media": "18111357743161551",
    "at": "2026-10-07T12:05+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 39,
+   "id": "w_sleep_time",
+   "key": "w_sleep_time",
+   "media": "18088103918268232",
+   "at": "2026-10-07T18:15+00:00"
   }
  ],
  "next_relax": 7,
@@ -335,16 +343,17 @@
   "f_venusday",
   "w_cat_dog",
   "relax_sand",
-  "trick_x5"
+  "trick_x5",
+  "w_sleep_time"
  ],
  "turns": {
   "brain": 14,
   "relax": 13,
-  "social": 12
+  "social": 13
  },
  "stock": {
   "relax": 20,
   "brain": 62,
-  "social": 36
+  "social": 35
  }
 }
