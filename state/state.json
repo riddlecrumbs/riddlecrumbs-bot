@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-08-0",
+ "last_slot": "2026-10-08-1",
  "token_refreshed": "2026-10-02T07:13:41+00:00",
  "log": [
   {
@@ -311,6 +311,14 @@
    "key": "relax_lissajous",
    "media": "18462355648136300",
    "at": "2026-10-08T07:14+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 41,
+   "id": "r_egg",
+   "key": "r_egg",
+   "media": "18099355712356860",
+   "at": "2026-10-08T12:05+00:00"
   }
  ],
  "next_relax": 7,
@@ -353,16 +361,17 @@
   "relax_sand",
   "trick_x5",
   "w_sleep_time",
-  "relax_lissajous"
+  "relax_lissajous",
+  "r_egg"
  ],
  "turns": {
-  "brain": 14,
+  "brain": 15,
   "relax": 14,
   "social": 13
  },
  "stock": {
   "relax": 19,
-  "brain": 62,
+  "brain": 61,
   "social": 35
  }
 }
