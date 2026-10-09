@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-09-1",
+ "last_slot": "2026-10-09-2",
  "token_refreshed": "2026-10-09T07:15:04+00:00",
  "log": [
   {
@@ -343,6 +343,14 @@
    "key": "h_screenshot",
    "media": "18137468125728730",
    "at": "2026-10-09T12:04+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 45,
+   "id": "w_teleport_read",
+   "key": "w_teleport_read",
+   "media": "17998914108032450",
+   "at": "2026-10-09T18:13+00:00"
   }
  ],
  "next_relax": 7,
@@ -389,16 +397,17 @@
   "r_egg",
   "m_dessert",
   "relax_maze",
-  "h_screenshot"
+  "h_screenshot",
+  "w_teleport_read"
  ],
  "turns": {
   "brain": 16,
   "relax": 15,
-  "social": 14
+  "social": 15
  },
  "stock": {
   "relax": 18,
   "brain": 60,
-  "social": 34
+  "social": 33
  }
 }
