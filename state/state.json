@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-09-2",
+ "last_slot": "2026-10-10-0",
  "token_refreshed": "2026-10-09T07:15:04+00:00",
  "log": [
   {
@@ -351,6 +351,14 @@
    "key": "w_teleport_read",
    "media": "17998914108032450",
    "at": "2026-10-09T18:13+00:00"
+  },
+  {
+   "stream": "relax",
+   "n": 46,
+   "id": "x_fireworks",
+   "key": "relax_fireworks",
+   "media": "18149146222552186",
+   "at": "2026-10-10T07:11+00:00"
   }
  ],
  "next_relax": 7,
@@ -398,15 +406,16 @@
   "m_dessert",
   "relax_maze",
   "h_screenshot",
-  "w_teleport_read"
+  "w_teleport_read",
+  "relax_fireworks"
  ],
  "turns": {
   "brain": 16,
-  "relax": 15,
+  "relax": 16,
   "social": 15
  },
  "stock": {
-  "relax": 18,
+  "relax": 17,
   "brain": 60,
   "social": 33
  }
