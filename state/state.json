@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-10-1",
+ "last_slot": "2026-10-10-2",
  "token_refreshed": "2026-10-09T07:15:04+00:00",
  "log": [
   {
@@ -367,6 +367,14 @@
    "key": "test_countf",
    "media": "18136907738299655",
    "at": "2026-10-10T12:03+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 48,
+   "id": "w_phone_tv",
+   "key": "w_phone_tv",
+   "media": "18109036082220589",
+   "at": "2026-10-10T18:11+00:00"
   }
  ],
  "next_relax": 7,
@@ -416,16 +424,17 @@
   "h_screenshot",
   "w_teleport_read",
   "relax_fireworks",
-  "test_countf"
+  "test_countf",
+  "w_phone_tv"
  ],
  "turns": {
   "brain": 17,
   "relax": 16,
-  "social": 15
+  "social": 16
  },
  "stock": {
   "relax": 17,
   "brain": 59,
-  "social": 33
+  "social": 32
  }
 }
