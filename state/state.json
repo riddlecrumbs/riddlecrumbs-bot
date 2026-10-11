@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-11-1",
+ "last_slot": "2026-10-11-2",
  "token_refreshed": "2026-10-09T07:15:04+00:00",
  "log": [
   {
@@ -391,6 +391,14 @@
    "key": "q_diamond",
    "media": "17948498982302122",
    "at": "2026-10-11T12:04+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 51,
+   "id": "m_fantasy_job",
+   "key": "m_fantasy_job",
+   "media": "17961609321248458",
+   "at": "2026-10-11T18:11+00:00"
   }
  ],
  "next_relax": 7,
@@ -443,16 +451,17 @@
   "test_countf",
   "w_phone_tv",
   "relax_ripple",
-  "q_diamond"
+  "q_diamond",
+  "m_fantasy_job"
  ],
  "turns": {
   "brain": 18,
   "relax": 17,
-  "social": 16
+  "social": 17
  },
  "stock": {
   "relax": 16,
   "brain": 58,
-  "social": 32
+  "social": 31
  }
 }
