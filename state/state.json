@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-12-0",
+ "last_slot": "2026-10-12-1",
  "token_refreshed": "2026-10-09T07:15:04+00:00",
  "log": [
   {
@@ -407,6 +407,14 @@
    "key": "relax_dominoes",
    "media": "17911851183497867",
    "at": "2026-10-12T07:19+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 53,
+   "id": "r_candle",
+   "key": "r_candle",
+   "media": "17949505437313838",
+   "at": "2026-10-12T12:31+00:00"
   }
  ],
  "next_relax": 7,
@@ -461,16 +469,17 @@
   "relax_ripple",
   "q_diamond",
   "m_fantasy_job",
-  "relax_dominoes"
+  "relax_dominoes",
+  "r_candle"
  ],
  "turns": {
-  "brain": 18,
+  "brain": 19,
   "relax": 18,
   "social": 17
  },
  "stock": {
   "relax": 15,
-  "brain": 58,
+  "brain": 57,
   "social": 31
  }
 }
