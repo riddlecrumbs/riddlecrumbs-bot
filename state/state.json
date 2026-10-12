@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-12-1",
+ "last_slot": "2026-10-12-2",
  "token_refreshed": "2026-10-09T07:15:04+00:00",
  "log": [
   {
@@ -415,6 +415,14 @@
    "key": "r_candle",
    "media": "17949505437313838",
    "at": "2026-10-12T12:31+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 54,
+   "id": "w_rich_famous",
+   "key": "w_rich_famous",
+   "media": "18422623870155118",
+   "at": "2026-10-12T18:12+00:00"
   }
  ],
  "next_relax": 7,
@@ -470,16 +478,17 @@
   "q_diamond",
   "m_fantasy_job",
   "relax_dominoes",
-  "r_candle"
+  "r_candle",
+  "w_rich_famous"
  ],
  "turns": {
   "brain": 19,
   "relax": 18,
-  "social": 17
+  "social": 18
  },
  "stock": {
   "relax": 15,
   "brain": 57,
-  "social": 31
+  "social": 30
  }
 }
