@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-13-1",
+ "last_slot": "2026-10-13-2",
  "token_refreshed": "2026-10-09T07:15:04+00:00",
  "log": [
   {
@@ -439,6 +439,14 @@
    "key": "f_butterfly",
    "media": "18126304163492032",
    "at": "2026-10-13T12:07+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 57,
+   "id": "w_dragon_unicorn",
+   "key": "w_dragon_unicorn",
+   "media": "18108378397914293",
+   "at": "2026-10-13T18:17+00:00"
   }
  ],
  "next_relax": 7,
@@ -497,16 +505,17 @@
   "r_candle",
   "w_rich_famous",
   "relax_tree",
-  "f_butterfly"
+  "f_butterfly",
+  "w_dragon_unicorn"
  ],
  "turns": {
   "brain": 20,
   "relax": 19,
-  "social": 18
+  "social": 19
  },
  "stock": {
   "relax": 14,
   "brain": 56,
-  "social": 30
+  "social": 29
  }
 }
