@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-14-1",
+ "last_slot": "2026-10-14-2",
  "token_refreshed": "2026-10-09T07:15:04+00:00",
  "log": [
   {
@@ -463,6 +463,14 @@
    "key": "r_bottle",
    "media": "17865942528676565",
    "at": "2026-10-14T12:18+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 60,
+   "id": "m_vehicle",
+   "key": "m_vehicle",
+   "media": "18639541819018126",
+   "at": "2026-10-14T18:27+00:00"
   }
  ],
  "next_relax": 7,
@@ -524,16 +532,17 @@
   "f_butterfly",
   "w_dragon_unicorn",
   "relax_packing",
-  "r_bottle"
+  "r_bottle",
+  "m_vehicle"
  ],
  "turns": {
   "brain": 21,
   "relax": 20,
-  "social": 19
+  "social": 20
  },
  "stock": {
   "relax": 13,
   "brain": 55,
-  "social": 29
+  "social": 28
  }
 }
