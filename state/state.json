@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-13-2",
+ "last_slot": "2026-10-14-0",
  "token_refreshed": "2026-10-09T07:15:04+00:00",
  "log": [
   {
@@ -447,6 +447,14 @@
    "key": "w_dragon_unicorn",
    "media": "18108378397914293",
    "at": "2026-10-13T18:17+00:00"
+  },
+  {
+   "stream": "relax",
+   "n": 58,
+   "id": "x_packing",
+   "key": "relax_packing",
+   "media": "17974593048149284",
+   "at": "2026-10-14T07:34+00:00"
   }
  ],
  "next_relax": 7,
@@ -506,15 +514,16 @@
   "w_rich_famous",
   "relax_tree",
   "f_butterfly",
-  "w_dragon_unicorn"
+  "w_dragon_unicorn",
+  "relax_packing"
  ],
  "turns": {
   "brain": 20,
-  "relax": 19,
+  "relax": 20,
   "social": 19
  },
  "stock": {
-  "relax": 14,
+  "relax": 13,
   "brain": 56,
   "social": 29
  }
