@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-15-1",
+ "last_slot": "2026-10-15-2",
  "token_refreshed": "2026-10-09T07:15:04+00:00",
  "log": [
   {
@@ -487,6 +487,14 @@
    "key": "q_mercury",
    "media": "18118666016056036",
    "at": "2026-10-15T12:18+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 63,
+   "id": "w_ocean_space",
+   "key": "w_ocean_space",
+   "media": "18146200831602301",
+   "at": "2026-10-15T18:24+00:00"
   }
  ],
  "next_relax": 7,
@@ -551,16 +559,17 @@
   "r_bottle",
   "m_vehicle",
   "relax_corner",
-  "q_mercury"
+  "q_mercury",
+  "w_ocean_space"
  ],
  "turns": {
   "brain": 22,
   "relax": 21,
-  "social": 20
+  "social": 21
  },
  "stock": {
   "relax": 12,
   "brain": 54,
-  "social": 28
+  "social": 27
  }
 }
