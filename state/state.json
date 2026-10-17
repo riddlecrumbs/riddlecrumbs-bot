@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-16-2",
+ "last_slot": "2026-10-17-0",
  "token_refreshed": "2026-10-16T07:33:26+00:00",
  "log": [
   {
@@ -519,6 +519,14 @@
    "key": "w_breakfast_dinner",
    "media": "17986693326109598",
    "at": "2026-10-16T18:23+00:00"
+  },
+  {
+   "stream": "relax",
+   "n": 67,
+   "id": "x_squares",
+   "key": "relax_squares",
+   "media": "17949537912313073",
+   "at": "2026-10-17T07:28+00:00"
   }
  ],
  "next_relax": 7,
@@ -587,15 +595,16 @@
   "w_ocean_space",
   "relax_hilbert",
   "f_unicorn",
-  "w_breakfast_dinner"
+  "w_breakfast_dinner",
+  "relax_squares"
  ],
  "turns": {
   "brain": 23,
-  "relax": 22,
+  "relax": 23,
   "social": 22
  },
  "stock": {
-  "relax": 11,
+  "relax": 10,
   "brain": 53,
   "social": 26
  }
