@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-17-0",
+ "last_slot": "2026-10-17-1",
  "token_refreshed": "2026-10-16T07:33:26+00:00",
  "log": [
   {
@@ -527,6 +527,14 @@
    "key": "relax_squares",
    "media": "17949537912313073",
    "at": "2026-10-17T07:28+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 68,
+   "id": "trick_sq5",
+   "key": "trick_sq5",
+   "media": "18285734506294186",
+   "at": "2026-10-17T12:10+00:00"
   }
  ],
  "next_relax": 7,
@@ -596,16 +604,17 @@
   "relax_hilbert",
   "f_unicorn",
   "w_breakfast_dinner",
-  "relax_squares"
+  "relax_squares",
+  "trick_sq5"
  ],
  "turns": {
-  "brain": 23,
+  "brain": 24,
   "relax": 23,
   "social": 22
  },
  "stock": {
   "relax": 10,
-  "brain": 53,
+  "brain": 52,
   "social": 26
  }
 }
