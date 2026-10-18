@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-18-1",
+ "last_slot": "2026-10-18-2",
  "token_refreshed": "2026-10-16T07:33:26+00:00",
  "log": [
   {
@@ -551,6 +551,14 @@
    "key": "r_age",
    "media": "18124978075902912",
    "at": "2026-10-18T12:09+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 71,
+   "id": "m_snack",
+   "key": "m_snack",
+   "media": "18097438409537515",
+   "at": "2026-10-18T18:17+00:00"
   }
  ],
  "next_relax": 7,
@@ -623,16 +631,17 @@
   "relax_squares",
   "trick_sq5",
   "relax_lava",
-  "r_age"
+  "r_age",
+  "m_snack"
  ],
  "turns": {
   "brain": 25,
   "relax": 24,
-  "social": 22
+  "social": 23
  },
  "stock": {
   "relax": 9,
   "brain": 51,
-  "social": 26
+  "social": 25
  }
 }
