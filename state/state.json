@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-18-0",
+ "last_slot": "2026-10-18-1",
  "token_refreshed": "2026-10-16T07:33:26+00:00",
  "log": [
   {
@@ -543,6 +543,14 @@
    "key": "relax_lava",
    "media": "17891577060653717",
    "at": "2026-10-18T07:26+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 70,
+   "id": "r_age",
+   "key": "r_age",
+   "media": "18124978075902912",
+   "at": "2026-10-18T12:09+00:00"
   }
  ],
  "next_relax": 7,
@@ -614,16 +622,17 @@
   "w_breakfast_dinner",
   "relax_squares",
   "trick_sq5",
-  "relax_lava"
+  "relax_lava",
+  "r_age"
  ],
  "turns": {
-  "brain": 24,
+  "brain": 25,
   "relax": 24,
   "social": 22
  },
  "stock": {
   "relax": 9,
-  "brain": 52,
+  "brain": 51,
   "social": 26
  }
 }
