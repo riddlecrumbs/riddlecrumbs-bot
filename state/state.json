@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-19-1",
+ "last_slot": "2026-10-19-2",
  "token_refreshed": "2026-10-16T07:33:26+00:00",
  "log": [
   {
@@ -575,6 +575,14 @@
    "key": "h_lock",
    "media": "18015995150991346",
    "at": "2026-10-19T12:20+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 74,
+   "id": "w_giant_tiny",
+   "key": "w_giant_tiny",
+   "media": "17923275990224503",
+   "at": "2026-10-19T18:25+00:00"
   }
  ],
  "next_relax": 7,
@@ -650,16 +658,17 @@
   "r_age",
   "m_snack",
   "relax_stringart",
-  "h_lock"
+  "h_lock",
+  "w_giant_tiny"
  ],
  "turns": {
   "brain": 26,
   "relax": 25,
-  "social": 23
+  "social": 24
  },
  "stock": {
   "relax": 8,
   "brain": 50,
-  "social": 25
+  "social": 24
  }
 }
