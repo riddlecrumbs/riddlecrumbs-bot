@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-20-0",
+ "last_slot": "2026-10-20-1",
  "token_refreshed": "2026-10-16T07:33:26+00:00",
  "log": [
   {
@@ -591,6 +591,14 @@
    "key": "relax_cells",
    "media": "18397305661161805",
    "at": "2026-10-20T07:35+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 76,
+   "id": "test_thethe",
+   "key": "test_thethe",
+   "media": "18373972963213459",
+   "at": "2026-10-20T12:17+00:00"
   }
  ],
  "next_relax": 7,
@@ -668,16 +676,17 @@
   "relax_stringart",
   "h_lock",
   "w_giant_tiny",
-  "relax_cells"
+  "relax_cells",
+  "test_thethe"
  ],
  "turns": {
-  "brain": 26,
+  "brain": 27,
   "relax": 26,
   "social": 24
  },
  "stock": {
   "relax": 7,
-  "brain": 50,
+  "brain": 49,
   "social": 24
  }
 }
