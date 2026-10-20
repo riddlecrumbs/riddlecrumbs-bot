@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-19-2",
+ "last_slot": "2026-10-20-0",
  "token_refreshed": "2026-10-16T07:33:26+00:00",
  "log": [
   {
@@ -583,6 +583,14 @@
    "key": "w_giant_tiny",
    "media": "17923275990224503",
    "at": "2026-10-19T18:25+00:00"
+  },
+  {
+   "stream": "relax",
+   "n": 75,
+   "id": "x_cells",
+   "key": "relax_cells",
+   "media": "18397305661161805",
+   "at": "2026-10-20T07:35+00:00"
   }
  ],
  "next_relax": 7,
@@ -659,15 +667,16 @@
   "m_snack",
   "relax_stringart",
   "h_lock",
-  "w_giant_tiny"
+  "w_giant_tiny",
+  "relax_cells"
  ],
  "turns": {
   "brain": 26,
-  "relax": 25,
+  "relax": 26,
   "social": 24
  },
  "stock": {
-  "relax": 8,
+  "relax": 7,
   "brain": 50,
   "social": 24
  }
