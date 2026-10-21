@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-20-2",
+ "last_slot": "2026-10-21-0",
  "token_refreshed": "2026-10-16T07:33:26+00:00",
  "log": [
   {
@@ -607,6 +607,14 @@
    "key": "w_music_movies",
    "media": "17900426319607478",
    "at": "2026-10-20T18:27+00:00"
+  },
+  {
+   "stream": "relax",
+   "n": 78,
+   "id": "x_globe",
+   "key": "relax_globe",
+   "media": "18098773565650723",
+   "at": "2026-10-21T07:37+00:00"
   }
  ],
  "next_relax": 7,
@@ -686,15 +694,16 @@
   "w_giant_tiny",
   "relax_cells",
   "test_thethe",
-  "w_music_movies"
+  "w_music_movies",
+  "relax_globe"
  ],
  "turns": {
   "brain": 27,
-  "relax": 26,
+  "relax": 27,
   "social": 25
  },
  "stock": {
-  "relax": 7,
+  "relax": 6,
   "brain": 49,
   "social": 23
  }
