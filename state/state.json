@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-21-1",
+ "last_slot": "2026-10-21-2",
  "token_refreshed": "2026-10-16T07:33:26+00:00",
  "log": [
   {
@@ -623,6 +623,14 @@
    "key": "q_cheetah",
    "media": "17886767376622307",
    "at": "2026-10-21T12:19+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 80,
+   "id": "m_weather",
+   "key": "m_weather",
+   "media": "18119588530983286",
+   "at": "2026-10-21T18:25+00:00"
   }
  ],
  "next_relax": 7,
@@ -704,16 +712,17 @@
   "test_thethe",
   "w_music_movies",
   "relax_globe",
-  "q_cheetah"
+  "q_cheetah",
+  "m_weather"
  ],
  "turns": {
   "brain": 28,
   "relax": 27,
-  "social": 25
+  "social": 26
  },
  "stock": {
   "relax": 6,
   "brain": 48,
-  "social": 23
+  "social": 22
  }
 }
