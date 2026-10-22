@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-22-1",
+ "last_slot": "2026-10-22-2",
  "token_refreshed": "2026-10-16T07:33:26+00:00",
  "log": [
   {
@@ -647,6 +647,14 @@
    "key": "r_comb",
    "media": "17924561481433101",
    "at": "2026-10-22T12:20+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 83,
+   "id": "w_early_late",
+   "key": "w_early_late",
+   "media": "18148288606525220",
+   "at": "2026-10-22T18:25+00:00"
   }
  ],
  "next_relax": 7,
@@ -731,16 +739,17 @@
   "q_cheetah",
   "m_weather",
   "relax_bubbles",
-  "r_comb"
+  "r_comb",
+  "w_early_late"
  ],
  "turns": {
   "brain": 29,
   "relax": 28,
-  "social": 26
+  "social": 27
  },
  "stock": {
   "relax": 5,
   "brain": 47,
-  "social": 22
+  "social": 21
  }
 }
