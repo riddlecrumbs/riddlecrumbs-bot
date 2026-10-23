@@ -2,8 +2,8 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-22-2",
- "token_refreshed": "2026-10-16T07:33:26+00:00",
+ "last_slot": "2026-10-23-0",
+ "token_refreshed": "2026-10-23T07:37:29+00:00",
  "log": [
   {
    "n": 0,
@@ -655,6 +655,14 @@
    "key": "w_early_late",
    "media": "18148288606525220",
    "at": "2026-10-22T18:25+00:00"
+  },
+  {
+   "stream": "relax",
+   "n": 84,
+   "id": "x_kaleido",
+   "key": "relax_kaleido",
+   "media": "18049103987819718",
+   "at": "2026-10-23T07:37+00:00"
   }
  ],
  "next_relax": 7,
@@ -740,15 +748,16 @@
   "m_weather",
   "relax_bubbles",
   "r_comb",
-  "w_early_late"
+  "w_early_late",
+  "relax_kaleido"
  ],
  "turns": {
   "brain": 29,
-  "relax": 28,
+  "relax": 29,
   "social": 27
  },
  "stock": {
-  "relax": 5,
+  "relax": 4,
   "brain": 47,
   "social": 21
  }
