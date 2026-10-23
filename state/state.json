@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-23-0",
+ "last_slot": "2026-10-23-1",
  "token_refreshed": "2026-10-23T07:37:29+00:00",
  "log": [
   {
@@ -663,6 +663,14 @@
    "key": "relax_kaleido",
    "media": "18049103987819718",
    "at": "2026-10-23T07:37+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 85,
+   "id": "f_flamingo",
+   "key": "f_flamingo",
+   "media": "18113496485033520",
+   "at": "2026-10-23T12:16+00:00"
   }
  ],
  "next_relax": 7,
@@ -749,16 +757,17 @@
   "relax_bubbles",
   "r_comb",
   "w_early_late",
-  "relax_kaleido"
+  "relax_kaleido",
+  "f_flamingo"
  ],
  "turns": {
-  "brain": 29,
+  "brain": 30,
   "relax": 29,
   "social": 27
  },
  "stock": {
   "relax": 4,
-  "brain": 47,
+  "brain": 46,
   "social": 21
  }
 }
