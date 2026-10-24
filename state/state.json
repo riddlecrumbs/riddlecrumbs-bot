@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-24-1",
+ "last_slot": "2026-10-24-2",
  "token_refreshed": "2026-10-23T07:37:29+00:00",
  "log": [
   {
@@ -695,6 +695,14 @@
    "key": "r_cold",
    "media": "18097884716217844",
    "at": "2026-10-24T12:13+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 89,
+   "id": "m_sidekick",
+   "key": "m_sidekick",
+   "media": "18142448467717511",
+   "at": "2026-10-24T18:18+00:00"
   }
  ],
  "next_relax": 7,
@@ -785,16 +793,17 @@
   "f_flamingo",
   "w_robot_chef",
   "relax_paint",
-  "r_cold"
+  "r_cold",
+  "m_sidekick"
  ],
  "turns": {
   "brain": 31,
   "relax": 30,
-  "social": 28
+  "social": 29
  },
  "stock": {
   "relax": 3,
   "brain": 45,
-  "social": 20
+  "social": 19
  }
 }
