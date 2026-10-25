@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-25-0",
+ "last_slot": "2026-10-25-1",
  "token_refreshed": "2026-10-23T07:37:29+00:00",
  "log": [
   {
@@ -711,6 +711,14 @@
    "key": "relax_blocks",
    "media": "18470870416143290",
    "at": "2026-10-25T07:31+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 91,
+   "id": "q_gold",
+   "key": "q_gold",
+   "media": "18134935312671971",
+   "at": "2026-10-25T12:13+00:00"
   }
  ],
  "next_relax": 7,
@@ -803,16 +811,17 @@
   "relax_paint",
   "r_cold",
   "m_sidekick",
-  "relax_blocks"
+  "relax_blocks",
+  "q_gold"
  ],
  "turns": {
-  "brain": 31,
+  "brain": 32,
   "relax": 31,
   "social": 29
  },
  "stock": {
   "relax": 2,
-  "brain": 45,
+  "brain": 44,
   "social": 19
  }
 }
