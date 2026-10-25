@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-25-1",
+ "last_slot": "2026-10-25-2",
  "token_refreshed": "2026-10-23T07:37:29+00:00",
  "log": [
   {
@@ -719,6 +719,14 @@
    "key": "q_gold",
    "media": "18134935312671971",
    "at": "2026-10-25T12:13+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 92,
+   "id": "w_underwater_clouds",
+   "key": "w_underwater_clouds",
+   "media": "18106167530204638",
+   "at": "2026-10-25T20:24+00:00"
   }
  ],
  "next_relax": 7,
@@ -812,16 +820,17 @@
   "r_cold",
   "m_sidekick",
   "relax_blocks",
-  "q_gold"
+  "q_gold",
+  "w_underwater_clouds"
  ],
  "turns": {
   "brain": 32,
   "relax": 31,
-  "social": 29
+  "social": 30
  },
  "stock": {
   "relax": 2,
   "brain": 44,
-  "social": 19
+  "social": 18
  }
 }
