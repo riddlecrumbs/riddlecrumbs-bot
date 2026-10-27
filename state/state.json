@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-27-1",
+ "last_slot": "2026-10-27-2",
  "token_refreshed": "2026-10-23T07:37:29+00:00",
  "log": [
   {
@@ -767,6 +767,14 @@
    "key": "trick_x25",
    "media": "18143273767719834",
    "at": "2026-10-27T16:55+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 98,
+   "id": "m_drink",
+   "key": "m_drink",
+   "media": "17874138765601571",
+   "at": "2026-10-27T21:50+00:00"
   }
  ],
  "next_relax": 7,
@@ -866,16 +874,17 @@
   "f_wombat",
   "w_chocolate_icecream",
   "relax_assemble",
-  "trick_x25"
+  "trick_x25",
+  "m_drink"
  ],
  "turns": {
   "brain": 34,
   "relax": 33,
-  "social": 31
+  "social": 32
  },
  "stock": {
   "relax": 0,
   "brain": 42,
-  "social": 17
+  "social": 16
  }
 }
