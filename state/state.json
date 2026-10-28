@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-28-1",
+ "last_slot": "2026-10-28-2",
  "token_refreshed": "2026-10-23T07:37:29+00:00",
  "log": [
   {
@@ -791,6 +791,14 @@
    "key": "h_emoji",
    "media": "18219204946342444",
    "at": "2026-10-28T17:29+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 101,
+   "id": "w_superstrength_superspeed",
+   "key": "w_superstrength_superspeed",
+   "media": "18419901289154165",
+   "at": "2026-10-28T22:11+00:00"
   }
  ],
  "next_relax": 7,
@@ -893,16 +901,17 @@
   "trick_x25",
   "m_drink",
   "r_needle",
-  "h_emoji"
+  "h_emoji",
+  "w_superstrength_superspeed"
  ],
  "turns": {
   "brain": 36,
   "relax": 33,
-  "social": 32
+  "social": 33
  },
  "stock": {
   "relax": 0,
   "brain": 40,
-  "social": 16
+  "social": 15
  }
 }
