@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-30-0",
+ "last_slot": "2026-10-30-1",
  "token_refreshed": "2026-10-30T13:51:56+00:00",
  "log": [
   {
@@ -831,6 +831,14 @@
    "key": "r_river",
    "media": "17989590018083808",
    "at": "2026-10-30T13:51+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 106,
+   "id": "f_sloth",
+   "key": "f_sloth",
+   "media": "18068146934785053",
+   "at": "2026-10-30T17:18+00:00"
   }
  ],
  "next_relax": 7,
@@ -938,16 +946,17 @@
   "test_lines",
   "q_timezones",
   "w_wizard_superhero",
-  "r_river"
+  "r_river",
+  "f_sloth"
  ],
  "turns": {
-  "brain": 39,
+  "brain": 40,
   "relax": 33,
   "social": 34
  },
  "stock": {
   "relax": 0,
-  "brain": 37,
+  "brain": 36,
   "social": 14
  }
 }
