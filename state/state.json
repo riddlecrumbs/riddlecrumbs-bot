@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-30-1",
+ "last_slot": "2026-10-30-2",
  "token_refreshed": "2026-10-30T13:51:56+00:00",
  "log": [
   {
@@ -839,6 +839,14 @@
    "key": "f_sloth",
    "media": "18068146934785053",
    "at": "2026-10-30T17:18+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 107,
+   "id": "m_hobby",
+   "key": "m_hobby",
+   "media": "18106852586362973",
+   "at": "2026-10-30T21:58+00:00"
   }
  ],
  "next_relax": 7,
@@ -947,16 +955,17 @@
   "q_timezones",
   "w_wizard_superhero",
   "r_river",
-  "f_sloth"
+  "f_sloth",
+  "m_hobby"
  ],
  "turns": {
   "brain": 40,
   "relax": 33,
-  "social": 34
+  "social": 35
  },
  "stock": {
   "relax": 0,
   "brain": 36,
-  "social": 14
+  "social": 13
  }
 }
