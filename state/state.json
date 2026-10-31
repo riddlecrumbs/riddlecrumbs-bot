@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-31-1",
+ "last_slot": "2026-10-31-2",
  "token_refreshed": "2026-10-30T13:51:56+00:00",
  "log": [
   {
@@ -863,6 +863,14 @@
    "key": "q_polarbear",
    "media": "18226353385339751",
    "at": "2026-10-31T16:22+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 110,
+   "id": "w_city_country",
+   "key": "w_city_country",
+   "media": "18118268090095650",
+   "at": "2026-10-31T21:00+00:00"
   }
  ],
  "next_relax": 7,
@@ -974,16 +982,17 @@
   "f_sloth",
   "m_hobby",
   "r_dark",
-  "q_polarbear"
+  "q_polarbear",
+  "w_city_country"
  ],
  "turns": {
   "brain": 42,
   "relax": 33,
-  "social": 35
+  "social": 36
  },
  "stock": {
   "relax": 0,
   "brain": 34,
-  "social": 13
+  "social": 12
  }
 }
