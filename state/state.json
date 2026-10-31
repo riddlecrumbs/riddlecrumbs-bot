@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-10-31-0",
+ "last_slot": "2026-10-31-1",
  "token_refreshed": "2026-10-30T13:51:56+00:00",
  "log": [
   {
@@ -855,6 +855,14 @@
    "key": "r_dark",
    "media": "17996455169841068",
    "at": "2026-10-31T13:18+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 109,
+   "id": "q_polarbear",
+   "key": "q_polarbear",
+   "media": "18226353385339751",
+   "at": "2026-10-31T16:22+00:00"
   }
  ],
  "next_relax": 7,
@@ -965,16 +973,17 @@
   "r_river",
   "f_sloth",
   "m_hobby",
-  "r_dark"
+  "r_dark",
+  "q_polarbear"
  ],
  "turns": {
-  "brain": 41,
+  "brain": 42,
   "relax": 33,
   "social": 35
  },
  "stock": {
   "relax": 0,
-  "brain": 35,
+  "brain": 34,
   "social": 13
  }
 }
