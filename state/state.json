@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-11-03-1",
+ "last_slot": "2026-11-03-2",
  "token_refreshed": "2026-10-30T13:51:56+00:00",
  "log": [
   {
@@ -935,6 +935,14 @@
    "key": "q_femur",
    "media": "18645964369058692",
    "at": "2026-11-03T18:44+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 119,
+   "id": "w_treehouse_castle",
+   "key": "w_treehouse_castle",
+   "media": "18127998421967491",
+   "at": "2026-11-03T22:55+00:00"
   }
  ],
  "next_relax": 7,
@@ -1055,16 +1063,17 @@
   "h_frozen",
   "w_dinosaur_mammoth",
   "test_circles",
-  "q_femur"
+  "q_femur",
+  "w_treehouse_castle"
  ],
  "turns": {
   "brain": 48,
   "relax": 33,
-  "social": 38
+  "social": 39
  },
  "stock": {
   "relax": 0,
   "brain": 28,
-  "social": 10
+  "social": 9
  }
 }
