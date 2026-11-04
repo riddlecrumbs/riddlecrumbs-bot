@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-11-04-0",
+ "last_slot": "2026-11-04-1",
  "token_refreshed": "2026-10-30T13:51:56+00:00",
  "log": [
   {
@@ -951,6 +951,14 @@
    "key": "r_map",
    "media": "18352883413255348",
    "at": "2026-11-04T15:05+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 121,
+   "id": "f_sharks",
+   "key": "f_sharks",
+   "media": "17968063272199101",
+   "at": "2026-11-04T18:55+00:00"
   }
  ],
  "next_relax": 7,
@@ -1073,16 +1081,17 @@
   "test_circles",
   "q_femur",
   "w_treehouse_castle",
-  "r_map"
+  "r_map",
+  "f_sharks"
  ],
  "turns": {
-  "brain": 49,
+  "brain": 50,
   "relax": 33,
   "social": 39
  },
  "stock": {
   "relax": 0,
-  "brain": 27,
+  "brain": 26,
   "social": 9
  }
 }
