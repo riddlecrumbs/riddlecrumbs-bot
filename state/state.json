@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-11-04-1",
+ "last_slot": "2026-11-04-2",
  "token_refreshed": "2026-10-30T13:51:56+00:00",
  "log": [
   {
@@ -959,6 +959,14 @@
    "key": "f_sharks",
    "media": "17968063272199101",
    "at": "2026-11-04T18:55+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 122,
+   "id": "w_sing_dance",
+   "key": "w_sing_dance",
+   "media": "18167708869489410",
+   "at": "2026-11-04T23:13+00:00"
   }
  ],
  "next_relax": 7,
@@ -1082,16 +1090,17 @@
   "q_femur",
   "w_treehouse_castle",
   "r_map",
-  "f_sharks"
+  "f_sharks",
+  "w_sing_dance"
  ],
  "turns": {
   "brain": 50,
   "relax": 33,
-  "social": 39
+  "social": 40
  },
  "stock": {
   "relax": 0,
   "brain": 26,
-  "social": 9
+  "social": 8
  }
 }
