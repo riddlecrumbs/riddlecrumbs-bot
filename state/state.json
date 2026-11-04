@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-11-03-2",
+ "last_slot": "2026-11-04-0",
  "token_refreshed": "2026-10-30T13:51:56+00:00",
  "log": [
   {
@@ -943,6 +943,14 @@
    "key": "w_treehouse_castle",
    "media": "18127998421967491",
    "at": "2026-11-03T22:55+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 120,
+   "id": "r_map",
+   "key": "r_map",
+   "media": "18352883413255348",
+   "at": "2026-11-04T15:05+00:00"
   }
  ],
  "next_relax": 7,
@@ -1064,16 +1072,17 @@
   "w_dinosaur_mammoth",
   "test_circles",
   "q_femur",
-  "w_treehouse_castle"
+  "w_treehouse_castle",
+  "r_map"
  ],
  "turns": {
-  "brain": 48,
+  "brain": 49,
   "relax": 33,
   "social": 39
  },
  "stock": {
   "relax": 0,
-  "brain": 28,
+  "brain": 27,
   "social": 9
  }
 }
