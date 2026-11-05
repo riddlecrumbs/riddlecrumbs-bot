@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-11-05-0",
+ "last_slot": "2026-11-05-1",
  "token_refreshed": "2026-10-30T13:51:56+00:00",
  "log": [
   {
@@ -975,6 +975,14 @@
    "key": "r_name",
    "media": "18019731059953343",
    "at": "2026-11-05T15:11+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 124,
+   "id": "q_minutes",
+   "key": "q_minutes",
+   "media": "17988500529088442",
+   "at": "2026-11-05T19:07+00:00"
   }
  ],
  "next_relax": 7,
@@ -1100,16 +1108,17 @@
   "r_map",
   "f_sharks",
   "w_sing_dance",
-  "r_name"
+  "r_name",
+  "q_minutes"
  ],
  "turns": {
-  "brain": 51,
+  "brain": 52,
   "relax": 33,
   "social": 40
  },
  "stock": {
   "relax": 0,
-  "brain": 25,
+  "brain": 24,
   "social": 8
  }
 }
