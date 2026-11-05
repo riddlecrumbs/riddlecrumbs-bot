@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-11-05-1",
+ "last_slot": "2026-11-05-2",
  "token_refreshed": "2026-10-30T13:51:56+00:00",
  "log": [
   {
@@ -983,6 +983,14 @@
    "key": "q_minutes",
    "media": "17988500529088442",
    "at": "2026-11-05T19:07+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 125,
+   "id": "w_cake_cookies",
+   "key": "w_cake_cookies",
+   "media": "18135481633597206",
+   "at": "2026-11-05T23:17+00:00"
   }
  ],
  "next_relax": 7,
@@ -1109,16 +1117,17 @@
   "f_sharks",
   "w_sing_dance",
   "r_name",
-  "q_minutes"
+  "q_minutes",
+  "w_cake_cookies"
  ],
  "turns": {
   "brain": 52,
   "relax": 33,
-  "social": 40
+  "social": 41
  },
  "stock": {
   "relax": 0,
   "brain": 24,
-  "social": 8
+  "social": 7
  }
 }
