@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-11-06-1",
+ "last_slot": "2026-11-06-2",
  "token_refreshed": "2026-11-06T14:53:34+00:00",
  "log": [
   {
@@ -1007,6 +1007,14 @@
    "key": "trick_x99",
    "media": "17870797302662489",
    "at": "2026-11-06T18:34+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 128,
+   "id": "w_boat_train",
+   "key": "w_boat_train",
+   "media": "18125852990315515",
+   "at": "2026-11-06T22:45+00:00"
   }
  ],
  "next_relax": 7,
@@ -1136,16 +1144,17 @@
   "q_minutes",
   "w_cake_cookies",
   "f_honey",
-  "trick_x99"
+  "trick_x99",
+  "w_boat_train"
  ],
  "turns": {
   "brain": 54,
   "relax": 33,
-  "social": 41
+  "social": 42
  },
  "stock": {
   "relax": 0,
   "brain": 22,
-  "social": 7
+  "social": 6
  }
 }
