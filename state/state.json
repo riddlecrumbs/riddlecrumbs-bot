@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-11-08-1",
+ "last_slot": "2026-11-08-2",
  "token_refreshed": "2026-11-06T14:53:34+00:00",
  "log": [
   {
@@ -1055,6 +1055,14 @@
    "key": "q_prime",
    "media": "18453841735120927",
    "at": "2026-11-08T17:17+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 134,
+   "id": "w_penguin_panda",
+   "key": "w_penguin_panda",
+   "media": "18042930977848687",
+   "at": "2026-11-08T21:41+00:00"
   }
  ],
  "next_relax": 7,
@@ -1190,16 +1198,17 @@
   "h_paste_plain",
   "w_remember_forget",
   "test_scramble",
-  "q_prime"
+  "q_prime",
+  "w_penguin_panda"
  ],
  "turns": {
   "brain": 58,
   "relax": 33,
-  "social": 43
+  "social": 44
  },
  "stock": {
   "relax": 0,
   "brain": 18,
-  "social": 5
+  "social": 4
  }
 }
