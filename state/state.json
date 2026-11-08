@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-11-07-2",
+ "last_slot": "2026-11-08-0",
  "token_refreshed": "2026-11-06T14:53:34+00:00",
  "log": [
   {
@@ -1039,6 +1039,14 @@
    "key": "w_remember_forget",
    "media": "18137859406732681",
    "at": "2026-11-07T21:28+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 132,
+   "id": "test_scramble",
+   "key": "test_scramble",
+   "media": "18108176678200737",
+   "at": "2026-11-08T14:04+00:00"
   }
  ],
  "next_relax": 7,
@@ -1172,16 +1180,17 @@
   "w_boat_train",
   "r_stamp",
   "h_paste_plain",
-  "w_remember_forget"
+  "w_remember_forget",
+  "test_scramble"
  ],
  "turns": {
-  "brain": 56,
+  "brain": 57,
   "relax": 33,
   "social": 43
  },
  "stock": {
   "relax": 0,
-  "brain": 20,
+  "brain": 19,
   "social": 5
  }
 }
