@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-11-08-2",
+ "last_slot": "2026-11-09-0",
  "token_refreshed": "2026-11-06T14:53:34+00:00",
  "log": [
   {
@@ -1063,6 +1063,14 @@
    "key": "w_penguin_panda",
    "media": "18042930977848687",
    "at": "2026-11-08T21:41+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 135,
+   "id": "r_coin",
+   "key": "r_coin",
+   "media": "17975709606176254",
+   "at": "2026-11-09T17:09+00:00"
   }
  ],
  "next_relax": 7,
@@ -1199,16 +1207,17 @@
   "w_remember_forget",
   "test_scramble",
   "q_prime",
-  "w_penguin_panda"
+  "w_penguin_panda",
+  "r_coin"
  ],
  "turns": {
-  "brain": 58,
+  "brain": 59,
   "relax": 33,
   "social": 44
  },
  "stock": {
   "relax": 0,
-  "brain": 18,
+  "brain": 17,
   "social": 4
  }
 }
