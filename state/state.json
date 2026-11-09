@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-11-09-0",
+ "last_slot": "2026-11-09-1",
  "token_refreshed": "2026-11-06T14:53:34+00:00",
  "log": [
   {
@@ -1071,6 +1071,14 @@
    "key": "r_coin",
    "media": "17975709606176254",
    "at": "2026-11-09T17:09+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 136,
+   "id": "f_stomach",
+   "key": "f_stomach",
+   "media": "18377379274212974",
+   "at": "2026-11-09T21:40+00:00"
   }
  ],
  "next_relax": 7,
@@ -1208,16 +1216,17 @@
   "test_scramble",
   "q_prime",
   "w_penguin_panda",
-  "r_coin"
+  "r_coin",
+  "f_stomach"
  ],
  "turns": {
-  "brain": 59,
+  "brain": 60,
   "relax": 33,
   "social": 44
  },
  "stock": {
   "relax": 0,
-  "brain": 17,
+  "brain": 16,
   "social": 4
  }
 }
