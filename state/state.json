@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-11-10-0",
+ "last_slot": "2026-11-10-1",
  "token_refreshed": "2026-11-06T14:53:34+00:00",
  "log": [
   {
@@ -1095,6 +1095,14 @@
    "key": "r_ton",
    "media": "18113554472351058",
    "at": "2026-11-10T15:30+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 139,
+   "id": "q_jupiter",
+   "key": "q_jupiter",
+   "media": "17899306560613326",
+   "at": "2026-11-10T18:57+00:00"
   }
  ],
  "next_relax": 7,
@@ -1235,16 +1243,17 @@
   "r_coin",
   "f_stomach",
   "w_camping_hotel",
-  "r_ton"
+  "r_ton",
+  "q_jupiter"
  ],
  "turns": {
-  "brain": 61,
+  "brain": 62,
   "relax": 33,
   "social": 45
  },
  "stock": {
   "relax": 0,
-  "brain": 15,
+  "brain": 14,
   "social": 3
  }
 }
