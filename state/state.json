@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-11-10-1",
+ "last_slot": "2026-11-10-2",
  "token_refreshed": "2026-11-06T14:53:34+00:00",
  "log": [
   {
@@ -1103,6 +1103,14 @@
    "key": "q_jupiter",
    "media": "17899306560613326",
    "at": "2026-11-10T18:57+00:00"
+  },
+  {
+   "stream": "social",
+   "n": 140,
+   "id": "w_spicy_sour",
+   "key": "w_spicy_sour",
+   "media": "17893604082457266",
+   "at": "2026-11-10T22:51+00:00"
   }
  ],
  "next_relax": 7,
@@ -1244,16 +1252,17 @@
   "f_stomach",
   "w_camping_hotel",
   "r_ton",
-  "q_jupiter"
+  "q_jupiter",
+  "w_spicy_sour"
  ],
  "turns": {
   "brain": 62,
   "relax": 33,
-  "social": 45
+  "social": 46
  },
  "stock": {
   "relax": 0,
   "brain": 14,
-  "social": 3
+  "social": 2
  }
 }
