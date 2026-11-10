@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-11-10-2",
+ "last_slot": "2026-11-10-0",
  "token_refreshed": "2026-11-06T14:53:34+00:00",
  "log": [
   {
@@ -1087,6 +1087,14 @@
    "key": "w_camping_hotel",
    "media": "17912574258484020",
    "at": "2026-11-10T01:12+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 138,
+   "id": "r_ton",
+   "key": "r_ton",
+   "media": "18113554472351058",
+   "at": "2026-11-10T15:30+00:00"
   }
  ],
  "next_relax": 7,
@@ -1226,16 +1234,17 @@
   "w_penguin_panda",
   "r_coin",
   "f_stomach",
-  "w_camping_hotel"
+  "w_camping_hotel",
+  "r_ton"
  ],
  "turns": {
-  "brain": 60,
+  "brain": 61,
   "relax": 33,
   "social": 45
  },
  "stock": {
   "relax": 0,
-  "brain": 16,
+  "brain": 15,
   "social": 3
  }
 }
