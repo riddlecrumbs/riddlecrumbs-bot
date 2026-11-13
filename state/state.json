@@ -2,8 +2,8 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-11-12-2",
- "token_refreshed": "2026-11-06T14:53:34+00:00",
+ "last_slot": "2026-11-13-0",
+ "token_refreshed": "2026-11-13T15:06:46+00:00",
  "log": [
   {
    "n": 0,
@@ -1151,6 +1151,14 @@
    "key": "w_breathe_fire_water",
    "media": "18044562881647761",
    "at": "2026-11-12T23:14+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 146,
+   "id": "h_find",
+   "key": "h_find",
+   "media": "18106702088201660",
+   "at": "2026-11-13T15:06+00:00"
   }
  ],
  "next_relax": 7,
@@ -1298,16 +1306,17 @@
   "w_game_book",
   "trick_x4",
   "r_hole",
-  "w_breathe_fire_water"
+  "w_breathe_fire_water",
+  "h_find"
  ],
  "turns": {
-  "brain": 65,
+  "brain": 66,
   "relax": 33,
   "social": 48
  },
  "stock": {
   "relax": 0,
-  "brain": 11,
+  "brain": 10,
   "social": 0
  }
 }
