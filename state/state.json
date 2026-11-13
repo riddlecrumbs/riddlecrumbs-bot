@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-11-13-1",
+ "last_slot": "2026-11-13-2",
  "token_refreshed": "2026-11-13T15:06:46+00:00",
  "log": [
   {
@@ -1167,6 +1167,14 @@
    "key": "q_hexagon",
    "media": "18025610312718410",
    "at": "2026-11-13T18:50+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 148,
+   "id": "q_plants",
+   "key": "q_plants",
+   "media": "18099966167435163",
+   "at": "2026-11-13T23:16+00:00"
   }
  ],
  "next_relax": 7,
@@ -1316,16 +1324,17 @@
   "r_hole",
   "w_breathe_fire_water",
   "h_find",
-  "q_hexagon"
+  "q_hexagon",
+  "q_plants"
  ],
  "turns": {
-  "brain": 67,
+  "brain": 68,
   "relax": 33,
   "social": 48
  },
  "stock": {
   "relax": 0,
-  "brain": 9,
+  "brain": 8,
   "social": 0
  }
 }
