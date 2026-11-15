@@ -2,7 +2,7 @@
  "next": 7,
  "start": "2026-09-24",
  "paused": false,
- "last_slot": "2026-11-15-1",
+ "last_slot": "2026-11-15-2",
  "token_refreshed": "2026-11-13T15:06:46+00:00",
  "log": [
   {
@@ -1215,6 +1215,14 @@
    "key": "trick_x12",
    "media": "17894288397619419",
    "at": "2026-11-15T18:03+00:00"
+  },
+  {
+   "stream": "brain",
+   "n": 154,
+   "id": "trick_sq50",
+   "key": "trick_sq50",
+   "media": "18220121296358058",
+   "at": "2026-11-15T22:29+00:00"
   }
  ],
  "next_relax": 7,
@@ -1370,16 +1378,17 @@
   "trick_percent",
   "trick_x15",
   "trick_near100",
-  "trick_x12"
+  "trick_x12",
+  "trick_sq50"
  ],
  "turns": {
-  "brain": 73,
+  "brain": 74,
   "relax": 33,
   "social": 48
  },
  "stock": {
   "relax": 0,
-  "brain": 3,
+  "brain": 2,
   "social": 0
  }
 }
